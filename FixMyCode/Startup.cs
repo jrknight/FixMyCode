@@ -19,7 +19,7 @@ namespace FixMyCode
             Configuration = _config;
             env = hostingEnvironment;
         }
-        
+        //advertisements
         public IConfiguration Configuration { get; }
 
         private IHostingEnvironment env;
