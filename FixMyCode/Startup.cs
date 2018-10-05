@@ -14,12 +14,16 @@ namespace FixMyCode
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration _config, IHostingEnvironment hostingEnvironment)
         {
-            Configuration = configuration;
+            Configuration = _config;
+            env = hostingEnvironment;
         }
-
+        
         public IConfiguration Configuration { get; }
+
+        private IHostingEnvironment env;
+        public IConfigurationRoot config;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,6 +34,8 @@ namespace FixMyCode
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
