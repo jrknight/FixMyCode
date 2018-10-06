@@ -11,12 +11,14 @@ namespace FixMyCode
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("config.json");
+                .AddJsonFile("appsettings.json");
 
             var Configuration = builder.Build();
 
+            string connectionString = Configuration.GetConnectionString("localDb");
+
             //SQL Server location needs to change
-            //var options = new DbContextOptionsBuilder<FixMyCodeDbContext>().UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=LibraryDB;Trusted_Connection=True;MultipleActiveResultSets=true").Options;
+            var options = new DbContextOptionsBuilder<FixMyCodeDbContext>().UseSqlServer(connectionString).Options;
             return new FixMyCodeDbContext(options);
         }
     }

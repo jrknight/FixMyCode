@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,9 @@ namespace FixMyCode
         {
             Configuration = _config;
             env = hostingEnvironment;
+            var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath).AddJsonFile("appsettings.json");
+
+            config = builder.Build();
         }
         //advertisements
         public IConfiguration Configuration { get; }
@@ -37,6 +41,12 @@ namespace FixMyCode
 
 
 
+            var connectionString = Configuration.GetConnectionString("azureDb");
+            var testConnectionString = Configuration.GetConnectionString("localDb");
+
+
+            
+            services.AddDbContext<FixMyCodeDbContext>(options => options.UseSqlServer(testConnectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
