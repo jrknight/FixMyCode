@@ -15,7 +15,12 @@ namespace FixMyCode
 
         }
 
+
+
+        public DbContextOptions Options { get; }
         public DbSet<Query> Queries { get; set; }
+        public DbSet<Reviewer> Reviewers { get; set; }
+        public DbSet<Student> Students { get; set; }
 
     }
 }
