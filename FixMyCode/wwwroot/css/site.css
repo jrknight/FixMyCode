@@ -19,14 +19,13 @@ p {
 
 .info {
     position: relative;
-    margin-top: 500 px;
+    margin-top: 500px;
 }
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    position:relative;
 }
 
 li {
