@@ -54,7 +54,7 @@ a:link {
 
 /*Changes the color of the text for the href link when hovered over*/
 a:hover {
-    color: black;
+    color: lightgray;
 }
 
 .LogInButton {
@@ -71,6 +71,7 @@ a:hover {
     resize: none;
     overflow: auto;
     margin-bottom: 50px;
+    
 }
 
 .code {
@@ -82,10 +83,19 @@ form {
     margin-top: 50px;
     margin-left: 40%;
     resize: none;
+    border: none;
 }
 
 .editcon {
     resize: none;
     overflow: auto;
     margin-bottom: 50px;
+}
+
+.email_entry {
+    margin-top: 50 px;
+}
+
+.yes_stbox {
+    margin-top: 40 px;
 }
