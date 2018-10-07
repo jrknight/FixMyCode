@@ -8,11 +8,10 @@ namespace FixMyCode.Services
 {
     public interface IQueryRepository
     {
-
-        IEnumerable<Query> GetQuery();
-        Query GetQuery(int Id);
-        IEnumerable<Query> GetQueriesWithStudent(int studentId);
-        void AddAuthor(Query query);
+        
+        Task<Query> GetQuery(int Id);
+        Task<IEnumerable<Query>> GetQueriesWithStudent(int studentId);
+        void AddQuery(Query query);
         bool Save();
 
     }

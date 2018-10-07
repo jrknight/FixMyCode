@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FixMyCode.Pages
 {
-    [BindProperties]
-    public class IndexModel : PageModel
+    public class CreateAccountModel : PageModel
     {
         public void OnGet()
         {
