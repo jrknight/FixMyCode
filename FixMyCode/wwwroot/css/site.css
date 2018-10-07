@@ -69,22 +69,14 @@ li a {
 .stquestion {
     resize: none;
     overflow: auto;
+    margin-bottom: 50px;
 }
 
 .code {
     resize: none;
     overflow: auto;
-    margin-top: 50 px;
-}
-
-.questionform {
-    display: block;
-    text-align: center;
 }
 
 form {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
+    margin-top: 50px;
 }
