@@ -3,11 +3,14 @@ body {
     position:relative;
 }
 
+<<<<<<< Updated upstream
 h1 {
     color: #e7e247;
 
 }
 
+=======
+>>>>>>> Stashed changes
 h2 {
     color: #4d5061;
     text-align: center;
@@ -19,7 +22,11 @@ p {
 
 .info {
     position: relative;
+<<<<<<< HEAD
     margin-top: 500px;
+=======
+    margin-top: 1000 px;
+>>>>>>> 384e031... css
 }
 
 ul {
@@ -57,4 +64,27 @@ li a {
     border: none;
     padding: 12px 28px;
     float: right;
+}
+
+.stquestion {
+    resize: none;
+    overflow: auto;
+}
+
+.code {
+    resize: none;
+    overflow: auto;
+    margin-top: 50 px;
+}
+
+.questionform {
+    display: block;
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }
