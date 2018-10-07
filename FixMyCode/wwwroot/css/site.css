@@ -22,28 +22,49 @@ p {
 
 .info {
     position: relative;
-    margin-top: 20%;
+    margin-left: 17.5%;
+    margin-top: 100%;
+    margin-bottom: 15%;
+    text-align: center;
+    width: 65%;
 }
 
-.button1 {
+.buttons {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+}
+
+.CreateAccountButton {
     background-color: #5c80bc;
     font-size: 16px;
     border-radius: 4px;
-    color: #f2f4f3;
     border: none;
+    width: 110px;
     padding: 12px 28px;
-    margin-top: 50px;
+    margin-bottom: 10px;
 }
 
-.button2 {
+/*Changes the default color of the text for the href link*/
+a:link {
+    color: white;
+}
+
+/*Changes the color of the text for the href link when hovered over*/
+a:hover {
+    color: black;
+}
+
+.LogInButton {
     background-color: #5c80bc;
     font-size: 16px;
     border-radius: 4px;
-    color: #f2f4f3;
+    color: white;
     border: none;
+    width: 110px;
     padding: 12px 28px;
-    float: right;
-    margin-top: 50 px;
 }
 
 .stquestion {
