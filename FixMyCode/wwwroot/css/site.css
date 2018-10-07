@@ -6,7 +6,7 @@ body {
 <<<<<<< Updated upstream
 h1 {
     color: #e7e247;
-
+    text-align: center;
 }
 
 =======
@@ -22,29 +22,7 @@ p {
 
 .info {
     position: relative;
-<<<<<<< HEAD
-    margin-top: 500px;
-=======
-    margin-top: 1000 px;
->>>>>>> 384e031... css
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    float: right;
-}
-
-li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    margin-top: 20%;
 }
 
 .button1 {
@@ -54,7 +32,7 @@ li a {
     color: #f2f4f3;
     border: none;
     padding: 12px 28px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .button2 {
@@ -65,7 +43,7 @@ li a {
     border: none;
     padding: 12px 28px;
     float: right;
-    margin-top: 20 px;
+    margin-top: 50 px;
 }
 
 .stquestion {
