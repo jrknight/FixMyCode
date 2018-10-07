@@ -57,14 +57,23 @@ a:hover {
     color: lightgray;
 }
 
-.LogInButton {
-    background-color: #5c80bc;
-    font-size: 16px;
-    border-radius: 4px;
+/*After the link has already been clicked*/
+a:after {
     color: white;
-    border: none;
+}
+
+/*makes a look like a button*/
+.button {
+    display: block;
     width: 110px;
+    height: auto;
+    background-color: #5c80bc;
     padding: 12px 28px;
+    text-align: center;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    font-size: 16px;
 }
 
 .form{
