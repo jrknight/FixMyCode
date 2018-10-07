@@ -1,0 +1,21 @@
+﻿@page
+@model CodeFixModel
+@{
+    ViewData["Title"] = "CodeFix";
+}
+<
+<html>
+<title>FixMyCode</title>
+<link rel="stylesheet" href="mpstyle.css">
+<div id="editform">
+    <form>
+        Edit Code Below<br>
+        <textarea class="editcon" name="corrections" cols="30" rows="10"></textarea>
+        <br />
+        How You Fixed It<br>
+        <textarea class="reasoningcode" name="reasoning" cols="30" rows="10">Reasoning with line numbers</textarea>
+        <br />
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</html>

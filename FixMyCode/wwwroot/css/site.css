@@ -54,6 +54,7 @@ li a {
     color: #f2f4f3;
     border: none;
     padding: 12px 28px;
+    margin-top: 20px;
 }
 
 .button2 {
@@ -64,6 +65,7 @@ li a {
     border: none;
     padding: 12px 28px;
     float: right;
+    margin-top: 20 px;
 }
 
 .stquestion {
@@ -79,4 +81,12 @@ li a {
 
 form {
     margin-top: 50px;
+    margin-left: 40%;
+    resize: none;
+}
+
+.editcon {
+    resize: none;
+    overflow: auto;
+    margin-bottom: 50px;
 }

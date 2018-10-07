@@ -6,13 +6,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FixMyCode.Pages
 {
-    public class AboutModel : PageModel
+    public class CodeFixModel : PageModel
     {
         public string Message { get; set; }
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "Your contact page.";
         }
+        
     }
 }
