@@ -8,11 +8,14 @@ namespace FixMyCode.Pages
 {
     public class StudentSubmissionModel : PageModel
     {
-        public string Message { get; set; }
+        public string question { get; set; }
+        public string code { get; set; }
 
+        //When the website is loaded
         public void OnGet()
         {
-            Message = "Your application description page.";
+            question = "This is a question";
+            code = "This is a code";
         }
     }
 }
