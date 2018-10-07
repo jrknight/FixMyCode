@@ -3,21 +3,20 @@
 @{
     ViewData["Title"] = "StudentSubmission";
 }
-    <html>
-        <title>FixMyCode</title>
-        <link rel="stylesheet" href="mpstyle.css">
-        <div id="questionform">
-            <form>
-                Specific Question<br>
-                @Html.TextAreaFor(model => model.question, 10, 40, htmlAttributes: new { style = "width: 35%; height: 35%" })
-                <br />
+    <link rel="stylesheet" href="site.css">
 
-                Your Code<br>
-                @Html.TextAreaFor(model => model.code, 10, 40, htmlAttributes: new { style = "width: 35%; height: 35%" })
-                <br />
+    <div>
+        <form class="form">
+            Specific Question
+            <br />
+            @Html.TextAreaFor(model => model.question, htmlAttributes: new { style = "overflow:auto;resize:none;margin-bottom:50px", @rows = 10, @cols = 30})
+            <br />
 
-                <input type="submit" value="Submit">
-            </form>
-        </div>
+            Your Code
+            <br />
+            @Html.TextAreaFor(model => model.code, htmlAttributes: new { style = "overflow:auto;resize:none", @rows = 10, @cols = 30 })
+            <br />
 
-    </html>
+            <input type="submit" value="Submit">
+        </form>
+    </div>

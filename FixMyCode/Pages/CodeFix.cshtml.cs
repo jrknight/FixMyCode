@@ -8,12 +8,14 @@ namespace FixMyCode.Pages
 {
     public class CodeFixModel : PageModel
     {
-        public string Message { get; set; }
+        public string editCode { get; set; }
+        public string howFixed { get; set; }
 
+        //When the website is loaded
         public void OnGet()
         {
-            Message = "Your contact page.";
+            editCode = "This is a code edit";
+            howFixed = "This is how code fix";
         }
-        
     }
 }

@@ -67,35 +67,16 @@ a:hover {
     padding: 12px 28px;
 }
 
-.stquestion {
-    resize: none;
-    overflow: auto;
-    margin-bottom: 50px;
-    
-}
-
-.code {
-    resize: none;
-    overflow: auto;
-}
-
-form {
-    margin-top: 50px;
+.form{
+    position: relative;
+    margin-top: 100px;
     margin-left: 40%;
-    resize: none;
-    border: none;
-}
-
-.editcon {
-    resize: none;
-    overflow: auto;
-    margin-bottom: 50px;
 }
 
 .email_entry {
-    margin-top: 50 px;
+    margin-top: 50px;
 }
 
 .yes_stbox {
-    margin-top: 40 px;
+    margin-top: 40px;
 }
