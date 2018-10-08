@@ -28,4 +28,11 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\images\success.png" />
+    <Content Remove="wwwroot\images\success.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\images\success.svg" />
+  </ItemGroup>
 </Project>
