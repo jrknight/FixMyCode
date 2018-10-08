@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FixMyCode.Entities
+namespace FixMyCode.Models
 {
-    public class AppUser : IdentityUser
+    public class CredentialModel : IdentityUser
     {
         public string Name { get; set; }
+        public string RoleClaim { get; set; }
+        public string Password { get; set; }
     }
 }

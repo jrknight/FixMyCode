@@ -11,6 +11,6 @@ namespace FixMyCode.Services
     {
         void AddStudentAsync(string Name, string Email);
         void AddReviewerAsync(string Name, string Credential, string Email);
-        AppUser GetUser(int Id);
+        Task<AppUser> GetUser(string Email);
     }
 }
