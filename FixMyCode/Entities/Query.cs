@@ -15,6 +15,8 @@ namespace FixMyCode.Entities
         [Required]
         public DateTime Date { get; set; }
         [Required]
+        public string Question { get; set; }
+        [Required]
         public string Code { get; set; }
         [Required]
         public bool IsSolved { get; set; } = false;
