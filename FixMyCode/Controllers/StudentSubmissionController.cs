@@ -30,16 +30,17 @@ namespace FixMyCode.Controllers
         public IActionResult StudentSubmission(StudentSubmissionModel model)
         {
             Debug.WriteLine("Controller Activated");
-            if (ModelState.IsValid)
+
+            /*if (ModelState.IsValid)
             {
                 //TODO: Get Student information in this shit
                 Query q = new Query { Date = DateTime.Now, Question = model.question, Code = model.code };
                 QueryRepository.AddQuery(q);
                 
                 
-            }
+            }*/
 
-            ConfirmationModel confirmationModel = new ConfirmationModel();
+            EmailService.EmailStudent("elijahboucharddrhs@gmail.com");
 
             return View("Confirmation");
         }

@@ -1,8 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FixMyCode.Configauration_POCO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using SendGrid.SmtpApi;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -12,44 +18,27 @@ namespace FixMyCode.Services
     public class EmailService : IEmailService
     {
 
-        IConfiguration configuration;
+        public IConfiguration config;
+        private readonly SMTP smtp;
 
-        public EmailService(IConfiguration config)
+        public EmailService(IConfiguration configuration, IOptions<SMTP> myConfiguration)
         {
-            configuration = config;
+            config = configuration;
+            smtp = myConfiguration.Value;
         }
 
-        public void EmailStudent(string emailAddress)
+        public async void EmailStudent(string emailAddress)
         {
-
-            var header = new Header();
-
-            var uniqueArgs = new Dictionary<string, string> { {"authorization", $"{configuration.GetValue<string>("SMTP:password")}"} };
-
-            header.AddUniqueArgs(uniqueArgs);
-
-            var xmstpapiJson = header.JsonString();
-
-            SmtpClient client = new SmtpClient
-            {
-                Port = configuration.GetValue<int>("STMP:port"),
-                Host = "smtp.sendgrid.net",
-                Timeout = 10000,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new System.Net.NetworkCredential("fixmycode", "fixmycodeteam2018")
-            };
-
-            MailMessage mail = new MailMessage();
-            mail.To.Add(new MailAddress(emailAddress));
-            mail.From = new MailAddress("no-reply@fixmycode.net");
-            mail.Subject = "Hi Elijah!";
-            mail.Body = "this is my test email body";
-
-            // add the custom header that we built above
-            mail.Headers.Add("X-SMTPAPI", xmstpapiJson);
-
-            client.SendAsync(mail, null);
+            var apiKey = smtp.ApiKey;
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("no-reply@fixmycode.net");
+            var subject = "test subject";
+            var to = new EmailAddress("elijahboucharddrhs@gmail.com");
+            var plainTextContent = "and easy to do anywhere, even with C#";
+            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+            
         }
 
         public void VerifyEmail(string emailAddress)
