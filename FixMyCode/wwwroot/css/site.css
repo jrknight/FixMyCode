@@ -1,6 +1,9 @@
 body {
-    background-color: #f2f4f3;
     position:relative;
+}
+
+.container body-content {
+    background-color: red;
 }
 
 <<<<<<< Updated upstream
@@ -74,15 +77,18 @@ a:after {
     border: none;
     color: white;
     font-size: 16px;
+    text-decoration:none;
 }
 
-.form{
+/*applied to all forms*/
+form{
     position: relative;
     margin-top: 100px;
     margin-left: 40%;
 }
 
-
+/*hides credentials input*/
 #credentials {
     display:none;
 }
+
