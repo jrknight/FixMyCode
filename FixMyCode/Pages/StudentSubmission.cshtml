@@ -3,24 +3,22 @@
 @{
     ViewData["Title"] = "StudentSubmission";
 }
-    <html>
-        <title>FixMyCode</title>
-        <link rel="stylesheet" href="site.css">
-        <div id="questionform">
-            <form>
-                Specific Question<br>
-                @Html.TextAreaFor(model => model.question, 10, 40, htmlAttributes: new { style = "width: 35%; height: 35%" })
-                <br />
 
-                Your Code<br>
-                @Html.TextAreaFor(model => model.code, 10, 40, htmlAttributes: new { style = "width: 35%; height: 35%" })
-                <br />
+<link rel="stylesheet" href="site.css">
 
-                <input type="submit" value="Submit">
+<div class="form">
+    @using (Html.BeginForm("StudentSubmission", "StudentSubmission", FormMethod.Post))
+    {
+        @Html.Label("Specific Question")
+        <br />
+        @Html.TextAreaFor(model => model.question, htmlAttributes: new { style = "overflow:auto;resize:none;margin-bottom:50px", @rows = 10, @cols = 30 })
+        <br />
 
-                <br/>
-                <a class="button" href="/Confirmation">Test</a>
-            </form>
-        </div>
+        @Html.Label("Your Code")
+        <br />
+        @Html.TextAreaFor(model => model.code, htmlAttributes: new { style = "overflow:auto;resize:none", @rows = 10, @cols = 30 })
+        <br />
 
-    </html>
+        <button type="submit">Submit</button>
+    }
+</div>
