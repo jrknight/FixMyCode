@@ -4,17 +4,28 @@ body {
 
 /*Background property not working*/
 div {
-    background-color: red;
+    background-color: slategrey;
 }
 
-<<<<<<< Updated upstream
 h1 {
-    color: #e7e247;
+    color: antiquewhite;
     text-align: center;
 }
 
-=======
->>>>>>> Stashed changes
+/*Where the top navigation bar settings go*/
+
+.navbar-collapse {
+    background-color:slategrey;
+}
+
+/*Title of the navbar*/
+.title-main {
+    background-color:slategrey;
+}
+
+
+
+
 h2 {
     color: #4d5061;
     text-align: center;
