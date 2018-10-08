@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FixMyCode.Configauration_POCO;
+using FixMyCode.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,7 +42,15 @@ namespace FixMyCode
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<RazorViewEngineOptions>(o =>
+            {
 
+                // {2} is area, {1} is controller,{0} is the action
+                o.ViewLocationFormats.Add("/Pages/{0}" + RazorViewEngine.ViewExtension);
+                
+            });
+
+            services.Configure<SMTP>(Configuration.GetSection("SMTP"));
 
             var connectionString = Configuration.GetConnectionString("azureDb");
             var testConnectionString = Configuration.GetConnectionString("localDb");
@@ -47,6 +58,9 @@ namespace FixMyCode
 
             
             services.AddDbContext<FixMyCodeDbContext>(options => options.UseSqlServer(testConnectionString));
+
+            services.AddScoped<IQueryRepository, QueryRepository>();
+            services.AddScoped<IEmailService, EmailService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
