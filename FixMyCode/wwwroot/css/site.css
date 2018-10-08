@@ -17,17 +17,24 @@ h1 {
     background-color: antiquewhite;
 }
 
+.navbar-header:hover {
+    background-color: black;
+    color: antiquewhite;
+}
+
 #home,#editor,#student,#title {
     color: black;
 }
 
-
-
+#home:hover, #editor:hover, #student:hover, #title:hover {
+    color: antiquewhite;
+}
 
 li:hover {
     background-color:black;
     color:antiquewhite;
 }
+
 li:after {
     background-color:antiquewhite;
     color:black;
