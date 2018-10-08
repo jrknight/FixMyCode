@@ -14,11 +14,8 @@ namespace FixMyCode.Pages
         [Required]
         public string code { get; set; }
 
-        //When the website is loaded
+        //When the page is loaded
         public void OnGet()
-        {
-            question = "This is a question";
-            code = "This is a code";
-        }
+        {}
     }
 }

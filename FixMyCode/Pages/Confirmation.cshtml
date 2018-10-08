@@ -2,7 +2,10 @@
 @model ConfirmationModel
 
 <link rel="stylesheet" href="site.css" />
-<h2>Confirmation</h2>
+<title>@ViewBag.Title</title>
+@{ 
+    ViewBag.Title = "Confirmation";
+}
 
 <div id="confirmation_message">
 
