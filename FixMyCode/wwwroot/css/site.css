@@ -2,7 +2,8 @@ body {
     position:relative;
 }
 
-.container body-content {
+/*Background property not working*/
+div {
     background-color: red;
 }
 
