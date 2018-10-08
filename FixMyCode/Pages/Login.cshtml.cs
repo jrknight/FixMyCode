@@ -7,11 +7,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FixMyCode.Pages
 {
-    public class ConfirmationModel : PageModel
+    public class LoginModel : PageModel
     {
         public void OnGet()
         {
-            
         }
     }
 }

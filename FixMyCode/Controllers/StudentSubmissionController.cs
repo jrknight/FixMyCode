@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using FixMyCode.Entities;
@@ -25,9 +26,10 @@ namespace FixMyCode.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("StudentSubmission")]
         public IActionResult StudentSubmission(StudentSubmissionModel model)
         {
+            Debug.WriteLine("Controller Activated");
             if (ModelState.IsValid)
             {
                 //TODO: Get Student information in this shit
@@ -37,7 +39,9 @@ namespace FixMyCode.Controllers
                 
             }
 
-            return View("Index", model);
+            ConfirmationModel confirmationModel = new ConfirmationModel();
+
+            return View("Confirmation");
         }
     }
 }
