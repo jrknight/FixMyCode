@@ -30,4 +30,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\images\qbkls.png" />
+    <Content Remove="wwwroot\images\patternbackground.png" />
+  </ItemGroup>
 </Project>
