@@ -82,10 +82,7 @@ a:after {
     margin-left: 40%;
 }
 
-.email_entry {
-    margin-top: 50px;
-}
 
-.yes_stbox {
-    margin-top: 40px;
+#credentials {
+    display:none;
 }

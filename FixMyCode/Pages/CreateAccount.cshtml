@@ -9,17 +9,37 @@
 <html>
 
     <link rel = "stylesheet" href="site.css" />
+    <script type="text/javascript">function showStuff() {
+    document.getElementById("credentials").style.display= "block";
+        }
+    </script>
 
     <div>
         <form>
-            Full Name<br>
-            <input type="text" name="fullname" class="name_entry" />
-            Email<br>
-            <input type="email" name="emailadd" class="email_entry" />
-            Are you a student?<br>
-            <input type="checkbox" class="yes_stbox" />
-            <input type="submit" value="Submit" class="submit_create" />
+            Full Name<br />
+            <input type="text" name="fullname" id="name_entry" />
 
+            Email
+            <input type="email" name="emailadd" id="email_entry" />
+
+            <br /> Password
+            <input type="password" name="passwd" id="password_entry" />
+
+            <br /> Confirm Password
+            <input type="password" name="confirm_passwd" id="confirm_pw" />
+
+            <!--When clicked shows the input text box for editor verification-->
+            <br /> Are you an editor?
+            <input type="checkbox" id="editor_check" onclick="showStuff()" />
+
+            <!--Hidden before check mark-->
+            <br /> Credentials
+            <input type="text" id="credentials" />
+
+            <br />Are you a student?
+            <input type="checkbox" id="yes_stbox" /> <br />
+
+            <input type="submit" value="Submit" id="submit_create" />
         </form>
     </div>
 
