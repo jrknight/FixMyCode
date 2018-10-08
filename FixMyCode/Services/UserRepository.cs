@@ -22,21 +22,22 @@ namespace FixMyCode.Services
 
         public async void AddReviewerAsync(string Name, string Credential, string Email)
         {
-            AppUser reviewer = new AppUser { Email = Email };
+            AppUser reviewer = new AppUser { Email = Email, Name = Name };
 
             await userManager.AddClaimAsync(reviewer, new Claim("usertype", "reviewer"));
-            await userManager.AddClaimAsync(reviewer, new Claim("fullname", Name));
 
         }
 
         public async void AddStudentAsync(string Name, string Email)
         {
-            throw new NotImplementedException();
+            AppUser student = new AppUser { Email = Email, Name = Name };
+
+            await userManager.AddClaimAsync(student, new Claim("usertype", "student"));
         }
 
-        public AppUser GetUser(int Id)
+        public async Task<AppUser> GetUser(string Email)
         {
-            throw new NotImplementedException();
+            return  await userManager.FindByEmailAsync(Email);
         }
     }
 }
