@@ -4,27 +4,34 @@ body {
 
 /*Background property not working*/
 div {
-    background-color: slategrey;
+    background-color: antiquewhite;
 }
 
 h1 {
-    color: antiquewhite;
+    color: black;
     text-align: center;
 }
 
 /*Where the top navigation bar settings go*/
-
 .navbar-collapse {
-    background-color:slategrey;
+    background-color: antiquewhite;
 }
 
-/*Title of the navbar*/
-.title-main {
-    background-color:slategrey;
+#home,#editor,#student,#title {
+    color: black;
 }
 
 
 
+
+li:hover {
+    background-color:black;
+    color:antiquewhite;
+}
+li:after {
+    background-color:antiquewhite;
+    color:black;
+}
 
 h2 {
     color: #4d5061;
@@ -38,7 +45,7 @@ p {
 .info {
     position: relative;
     margin-left: 17.5%;
-    margin-top: 100%;
+    margin-top: 20%;
     margin-bottom: 15%;
     text-align: center;
     width: 65%;
