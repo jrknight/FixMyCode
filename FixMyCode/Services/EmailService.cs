@@ -29,7 +29,7 @@ namespace FixMyCode.Services
 
         public async void EmailStudent(string emailAddress)
         {
-            var apiKey = smtp.ApiKey;
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("no-reply@fixmycode.net");
             var subject = "test subject";
