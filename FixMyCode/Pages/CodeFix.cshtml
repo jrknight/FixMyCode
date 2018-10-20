@@ -8,17 +8,18 @@
     <script type="text/javascript" src="~/js/site.js"></script>
 
     <div>
-        <form class="form">
-            Edit Code Below
+        @using (Html.BeginForm("", "", FormMethod.Post))
+        {
+            @Html.Label("Edit Code Below")
             <br />
             @Html.TextAreaFor(model => model.editCode, htmlAttributes: new { style = "overflow:auto;resize:none;margin-bottom:50px", @rows = 10, @cols = 30 })
             <br />
 
-            How You Fixed It
+            @Html.Label("How You Fixed It")
             <br />
             @Html.TextAreaFor(model => model.howFixed, htmlAttributes: new { style = "overflow:auto;resize:none", @rows = 10, @cols = 30 })
             <br />
 
             <input type="submit" value="Submit">
-        </form>
+        }
     </div>
