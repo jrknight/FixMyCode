@@ -18,21 +18,25 @@
             @Html.TextBoxFor(model => model.fullName)
             <br />
 
+            <br />
             @Html.Label("Email")
             <br />
             @Html.TextBoxFor(model => model.email)
             <br />
 
+            <br />
             @Html.Label("Password")
             <br />
             @Html.PasswordFor(model => model.password)
             <br />
 
+            <br />
             @Html.Label("Confirm Password")
             <br />
             <input type="password" name="confirm_passwd" id="confirm_pw" />
             <br />
 
+            <br />
             <input type="checkbox" id="editor_check" onclick="showStuff()" />
             @Html.Label("Editor")
 
@@ -40,12 +44,13 @@
             @Html.Label("Student")
             <br />
 
-
+            <br />
             @Html.Label("Credentials / Grade")
             <br />
             @Html.TextBoxFor(model => model.credentials)
             <br />
 
+            <br />
             <button type="submit" id="submit_create">Submit</button>
         }
     </div>

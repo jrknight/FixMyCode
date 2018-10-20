@@ -8,15 +8,22 @@
 
 
 
-<form class="form">
-    Email <br />
-    <input type="email" name="loginemail" id="login_email" />
-
-    <br />Password<br />
-    <input type="password" name="loginpasswd" id="login_passwd" />
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    @Html.Label("Email")
+    <br />
+    @Html.TextBoxFor(model => model.email)
+    <br />
 
     <br />
-    <a class="button" href="">Login</a>
-</form>
+    @Html.Label("Password")
+    <br />
+    @Html.TextBoxFor(model => model.password)
+    <br />
+    
+    <br />
+    <button type="submit" id="login">Login</button>
+}
+
 
 
