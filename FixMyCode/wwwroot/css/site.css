@@ -22,11 +22,11 @@ h1 {
     color: antiquewhite;
 }
 
-.nav {
+#home,#editor,#student,#title {
     color: black;
 }
 
-.nav:hover {
+#home:hover, #editor:hover, #student:hover, #title:hover {
     color: antiquewhite;
 }
 
