@@ -11,16 +11,19 @@ namespace FixMyCode.Pages
     public class CreateAccountModel : PageModel
     {
         [Required]
-        public string fullName { get; set; }
+        public string Username { get; set; }
         [Required]
-        public string email { get; set; }
+        public string Email { get; set; }
         [Required]
-        public string password { get; set; }
-        [Required]
-        public string credentials { get; set; }
+        public string Password { get; set; }
+
+
+        public string Credentials { get; set; }
 
         //When the page is loaded
         public void OnGet()
-        {}
+        {
+
+        }
     }
 }

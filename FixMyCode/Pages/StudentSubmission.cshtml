@@ -11,12 +11,12 @@
     {
         @Html.Label("Specific Question")
         <br />
-        @Html.TextAreaFor(model => model.question, htmlAttributes: new { style = "overflow:auto;resize:none;margin-bottom:50px", @rows = 10, @cols = 30 })
+        @Html.TextAreaFor(model => model.Question, htmlAttributes: new { style = "overflow:auto;resize:none;margin-bottom:50px", @rows = 10, @cols = 30 })
         <br />
 
         @Html.Label("Your Code")
         <br />
-        @Html.TextAreaFor(model => model.code, htmlAttributes: new { style = "overflow:auto;resize:none", @rows = 10, @cols = 30 })
+        @Html.TextAreaFor(model => model.Code, htmlAttributes: new { style = "overflow:auto;resize:none", @rows = 10, @cols = 30 })
         <br />
 
         <button type="submit">Submit</button>

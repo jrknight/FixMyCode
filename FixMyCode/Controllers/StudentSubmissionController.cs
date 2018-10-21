@@ -27,21 +27,22 @@ namespace FixMyCode.Controllers
         }
 
         [HttpPost("StudentSubmission")]
-        public IActionResult StudentSubmission(StudentSubmissionModel model)
+        public async Task<IActionResult> StudentSubmission(StudentSubmissionModel model)
         {
             Debug.WriteLine("Controller Activated");
 
-            /*if (ModelState.IsValid)
+           if (ModelState.IsValid)
             {
                 //TODO: Get Student information in this shit
-                Query q = new Query { Date = DateTime.Now, Question = model.question, Code = model.code };
+                Query q = new Query { Date = DateTime.Now, Question = model.Question, Code = model.Code };
                 QueryRepository.AddQuery(q);
                 
                 
-            }*/
-
-            EmailService.EmailStudent("elijahboucharddrhs@gmail.com");
-
+            }
+            if (await QueryRepository.Save())
+            {
+                return View("Error");
+            } 
             return View("Confirmation");
         }
     }

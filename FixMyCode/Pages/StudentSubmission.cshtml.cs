@@ -10,12 +10,14 @@ namespace FixMyCode.Pages
     public class StudentSubmissionModel : PageModel
     {
         [Required]
-        public string question { get; set; }
+        public string Question { get; set; }
         [Required]
-        public string code { get; set; }
+        public string Code { get; set; }
 
         //When the page is loaded
         public void OnGet()
-        {}
+        {
+
+        }
     }
 }

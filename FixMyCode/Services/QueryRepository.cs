@@ -29,6 +29,11 @@ namespace FixMyCode.Services
             await context.Queries.AddAsync(query);
         }
 
+        public async Task<IEnumerable<Query>> GetAllUnsolvedQueries()
+        {
+            return await context.Queries.Where(q => !q.IsSolved).ToListAsync();
+        }
+
         /*
          *TODO: Method needs to be looked at after auth is working properly
          * Method will return all of a students queries in a list
@@ -44,9 +49,16 @@ namespace FixMyCode.Services
             return await context.Queries.FirstOrDefaultAsync(q => q.Id == Id);
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
-            return (context.SaveChanges() >= 0);
+            return (await context.SaveChangesAsync() >= 0);
+        }
+
+        public async void SolveQuery(int QueryId)
+        {
+            var query = await context.Queries.Where(q => q.Id == QueryId).FirstOrDefaultAsync();
+            query.IsSolved = true;
+
         }
     }
 }
