@@ -20,17 +20,17 @@ namespace FixMyCode.Services
             userManager = userMgr;
         }
 
-        public async void AddReviewerAsync(string Name, string Credential, string Email)
+        public async void AddReviewerAsync(string UserName, string Credential, string Email)
         {
-            AppUser reviewer = new AppUser { Email = Email, Name = Name };
+            AppUser reviewer = new AppUser { Email = Email, UserName = UserName };
 
             await userManager.AddClaimAsync(reviewer, new Claim("usertype", "reviewer"));
 
         }
 
-        public async void AddStudentAsync(string Name, string Email)
+        public async void AddStudentAsync(string UserName, string Email)
         {
-            AppUser student = new AppUser { Email = Email, Name = Name };
+            AppUser student = new AppUser { Email = Email, UserName = UserName };
 
             await userManager.AddClaimAsync(student, new Claim("usertype", "student"));
         }

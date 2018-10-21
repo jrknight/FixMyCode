@@ -10,9 +10,11 @@ namespace FixMyCode.Services
     {
         
         Task<Query> GetQuery(int Id);
-        Task<IEnumerable<Query>> GetQueriesWithStudent(int studentId);
+        Task<IEnumerable<Query>> GetQueriesWithStudent(int StudentId);
         void AddQuery(Query query);
-        bool Save();
+        Task<IEnumerable<Query>> GetAllUnsolvedQueries();
+        void SolveQuery(int QueryId);
+        Task<bool> Save();
 
     }
 }

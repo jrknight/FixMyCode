@@ -1,4 +1,5 @@
 ﻿using FixMyCode.Configauration_POCO;
+using FixMyCode.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -41,9 +42,17 @@ namespace FixMyCode.Services
             
         }
 
-        public void VerifyEmail(string emailAddress)
+        public async void VerifyEmail(AppUser user, string callbackUrl)
         {
-            throw new NotImplementedException();
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("no-reply@fixmycode.net");
+            var subject = "Verify Email";
+            var to = new EmailAddress(user.Email);
+            var plainTextContent = "";
+            var htmlContent = $"Please confirm your account by clicking this link: {callbackUrl}";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
         }
     }
 }

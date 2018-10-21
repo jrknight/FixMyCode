@@ -11,9 +11,9 @@ namespace FixMyCode.Pages
     public class LoginModel : PageModel
     {
         [Required]
-        public string email { get; set; }
+        public string Email { get; set; }
         [Required]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         public void OnGet()
         {

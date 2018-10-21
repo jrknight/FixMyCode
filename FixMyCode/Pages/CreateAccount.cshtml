@@ -13,21 +13,21 @@
     <div>
         @using (Html.BeginForm("CreateAccount", "CreateAccount", FormMethod.Post))
         {
-            @Html.Label("Full Name")
+            @Html.Label("Username")
             <br />
-            @Html.TextBoxFor(model => model.fullName)
+            @Html.TextBoxFor(model => model.Username)
             <br />
 
             <br />
             @Html.Label("Email")
             <br />
-            @Html.TextBoxFor(model => model.email)
+            @Html.TextBoxFor(model => model.Email)
             <br />
 
             <br />
             @Html.Label("Password")
             <br />
-            @Html.PasswordFor(model => model.password)
+            @Html.PasswordFor(model => model.Password)
             <br />
 
             <br />
@@ -47,7 +47,7 @@
             <br />
             @Html.Label("Credentials / Grade")
             <br />
-            @Html.TextBoxFor(model => model.credentials)
+            @Html.TextBoxFor(model => model.Credentials)
             <br />
 
             <br />
