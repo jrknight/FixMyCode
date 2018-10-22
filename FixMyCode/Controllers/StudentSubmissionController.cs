@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using FixMyCode.Entities;
 using FixMyCode.Pages;
 using FixMyCode.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FixMyCode.Controllers
 {
+    [Authorize]
     public class StudentSubmissionController : Controller
     {
         private IQueryRepository QueryRepository;

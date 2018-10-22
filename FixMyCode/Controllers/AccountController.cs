@@ -11,19 +11,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FixMyCode.Controllers
 {
-    [Route("account")]
-    public class CreateAccountController : Controller
+    [Route("Account")]
+    public class AccountController : Controller
     {
 
         private IEmailService EmailService;
         private IUrlHelper UrlHelper;
         private UserManager<AppUser> UserManager;
+        private readonly SignInManager<AppUser> SignInManager;
 
-        public CreateAccountController(UserManager<AppUser> userManager, IEmailService ES, IUrlHelper urlHelper)
+        public AccountController(UserManager<AppUser> userManager, IEmailService ES, IUrlHelper urlHelper, SignInManager<AppUser> signInManager)
         {
             UserManager = userManager;
             EmailService = ES;
             UrlHelper = urlHelper;
+            SignInManager = signInManager;
         }
 
         public IActionResult Index()
@@ -50,6 +52,7 @@ namespace FixMyCode.Controllers
         }
 
         [HttpPost("CreateAccount")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateAccount(CreateAccountModel model)
         {
             Debug.WriteLine("Controller Activated");
@@ -90,13 +93,33 @@ namespace FixMyCode.Controllers
                 else
                 {
                     await UserManager.DeleteAsync(newUser);
-                    return View("Error");
+                    return View(model);
                 }
             }
 
-            return View("Error");
+            return View(model);
         }
 
+        [HttpPost("Login")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginModel loginModel)
+        {
+            var user = await UserManager.FindByEmailAsync(loginModel.Email);
+
+            var login = await SignInManager.PasswordSignInAsync(user, loginModel.Password, true, false);
+
+            if (login.Succeeded)
+            {
+                return Redirect("/");
+            }
+            else if (login.IsNotAllowed)
+            {
+                return View("Error");
+            }
+
+            
+            return View();
+        }
 
     }
 }

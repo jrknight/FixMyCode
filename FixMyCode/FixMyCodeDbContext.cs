@@ -1,4 +1,6 @@
 ﻿using FixMyCode.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FixMyCode
 {
-    public class FixMyCodeDbContext : DbContext
+    public class FixMyCodeDbContext : IdentityDbContext<AppUser>
     {
 
         public FixMyCodeDbContext(DbContextOptions<FixMyCodeDbContext> options) : base(options)
@@ -15,6 +17,10 @@ namespace FixMyCode
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
 
 
         public DbContextOptions Options { get; }
