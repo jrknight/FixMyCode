@@ -20,9 +20,9 @@ namespace FixMyCode.Pages
             string x = editCode;
             string y = howFixed;
 
-            CredentialModel a = new CredentialModel { Name = x, Email = "jrk.reno@gmail.com", Password = y };
+            CredentialModel a = new CredentialModel { Username = x, Email = "jrk.reno@gmail.com", Password = y };
 
-            Debug.WriteLine($"{a.Name} {a.Email} {a.Password}");
+            Debug.WriteLine($"{a.Username} {a.Email} {a.Password}");
 
 
 

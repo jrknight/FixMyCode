@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace FixMyCode.Models
 {
-    public class CredentialModel : IdentityUser
+    public class CredentialModel
     {
-        public string Name { get; set; }
+        public string Username { get; set; }
+        public string  Email { get; set; }
         public string RoleClaim { get; set; }
         public string Password { get; set; }
+        public string Credentials { get; set; }
     }
 }
