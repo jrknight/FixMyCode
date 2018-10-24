@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FixMyCode.Configauration_POCO;
 using FixMyCode.Entities;
 using FixMyCode.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -54,21 +54,39 @@ namespace FixMyCode
                 
             });
 
-            services.Configure<SMTP>(Configuration.GetSection("SMTP"));
-
             var connectionString = Configuration.GetConnectionString("azureDb");
             var testConnectionString = Configuration.GetConnectionString("localDb");
             
             services.AddDbContext<FixMyCodeDbContext>(options => options.UseSqlServer(testConnectionString));
 
             services.AddIdentity<AppUser, IdentityRole>(o => {
-                o.Password.RequireDigit = false;
+                o.Password.RequireDigit = true;
                 o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequiredLength = 8;
+                o.SignIn.RequireConfirmedEmail = true;
                 })
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<FixMyCodeDbContext>();
 
-            
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.Cookie.Name = "YourAppCookieName";
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.LoginPath = "/account/login";
+                options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+                options.SlidingExpiration = true;
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => {
+                    options.Events.OnRedirectToLogin = (context) =>
+                    {
+                        context.Response.StatusCode = 401;
+                        return Task.CompletedTask;
+                    };
+                });
 
             services.AddScoped<IQueryRepository, QueryRepository>();
             services.AddScoped<IEmailService, EmailService>();

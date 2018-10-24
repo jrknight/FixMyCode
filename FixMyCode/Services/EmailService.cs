@@ -1,5 +1,4 @@
-﻿using FixMyCode.Configauration_POCO;
-using FixMyCode.Entities;
+﻿using FixMyCode.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -20,12 +19,10 @@ namespace FixMyCode.Services
     {
 
         public IConfiguration config;
-        private readonly SMTP smtp;
 
-        public EmailService(IConfiguration configuration, IOptions<SMTP> myConfiguration)
+        public EmailService(IConfiguration configuration)
         {
             config = configuration;
-            smtp = myConfiguration.Value;
         }
 
         public async void EmailStudent(string emailAddress)
