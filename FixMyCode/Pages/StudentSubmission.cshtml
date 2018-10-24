@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/submissions/studentsubmission"
 @model StudentSubmissionModel
 @{
     ViewData["Title"] = "Student Submissions";
@@ -19,6 +19,6 @@
         @Html.TextAreaFor(model => model.Code, htmlAttributes: new { style = "overflow:auto;resize:none", @rows = 10, @cols = 30 })
         <br />
 
-        <button type="submit">Submit</button>
+        <button type="submit" id="student_submit">Submit</button>
     }
 </div>
