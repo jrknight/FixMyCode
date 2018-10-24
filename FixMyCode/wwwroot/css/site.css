@@ -3,8 +3,18 @@ body {
 }
 
 /*Background property not working*/
+<<<<<<< Updated upstream
 div {
+<<<<<<< Updated upstream
     background-color: antiquewhite;
+=======
+    background-color: slategrey;
+=======
+.container body-content {
+    background-image: url(images/qbkls.png);
+    background-repeat: repeat-x;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }
 
 h1 {
@@ -18,7 +28,7 @@ h1 {
 }
 
 .navbar-header:hover {
-    background-color: black;
+    background-color: pink;
     color: antiquewhite;
 }
 
@@ -40,6 +50,8 @@ li:after {
     color:black;
 }
 
+/**/
+
 h2 {
     color: #4d5061;
     text-align: center;
@@ -58,14 +70,6 @@ p {
     width: 65%;
 }
 
-.buttons {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
-}
-
 .CreateAccountButton {
     background-color: #5c80bc;
     font-size: 16px;
@@ -78,16 +82,6 @@ p {
 
 /*Changes the default color of the text for the href link*/
 a:link {
-    color: white;
-}
-
-/*Changes the color of the text for the href link when hovered over*/
-a:hover {
-    color: lightgray;
-}
-
-/*After the link has already been clicked*/
-a:after {
     color: white;
 }
 
@@ -104,6 +98,8 @@ a:after {
     color: white;
     font-size: 16px;
     text-decoration:none;
+
+    margin-left: 100px;
 }
 
 /*applied to all forms*/

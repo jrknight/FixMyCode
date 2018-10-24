@@ -34,7 +34,13 @@
                 <ul class="nav navbar-nav">
                     <li><a id="home" asp-page="/Index">Home</a></li>
                     <li><a id="editor" asp-page="/CodeFix">Editors</a></li>
-                    <li><a id="student" asp-page="/StudentSubmission">Students</a></li>
+                    <li><a id="student" href="/submissions/studentsubmission">Students</a></li>
+                    <li><a id="browse" asp-page="/Browse">Browse</a></li>
+
+                    <ul class="nav navbar-nav" style="margin-left:1000px">
+                        <li><a id="createAccount" href="/account/createaccount">Create</a></li>
+                        <li><a href="/account/login">Login</a></li>
+                    </ul>
                 </ul>
             </div>
         </div>

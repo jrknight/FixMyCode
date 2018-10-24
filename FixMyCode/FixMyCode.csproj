@@ -36,4 +36,7 @@
     <Content Remove="wwwroot\images\qbkls.png" />
     <Content Remove="wwwroot\images\patternbackground.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\images\qbkls.png" />
+  </ItemGroup>
 </Project>
