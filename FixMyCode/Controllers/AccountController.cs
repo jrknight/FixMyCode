@@ -33,7 +33,7 @@ namespace FixMyCode.Controllers
             return View();
         }
 
-        [HttpGet("ConfirmEmail")]
+        [HttpGet]
         public async Task<IActionResult> VerifyAccount(string userId, string code)
         {
             if (userId == null || code == null)
@@ -48,7 +48,7 @@ namespace FixMyCode.Controllers
                 return View("Confirmation");
             }
             
-            return View();
+            return View("Index");
         }
 
         [HttpPost("CreateAccount")]
@@ -64,18 +64,18 @@ namespace FixMyCode.Controllers
                 
             }
 
-            var user = await UserManager.FindByEmailAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.CredentialModel.Email);
 
             if (user == null)
             {
                 var newUser = new AppUser()
                 {
-                    UserName = model.Username,
-                    Email = model.Email,
+                    UserName = model.CredentialModel.Username,
+                    Email = model.CredentialModel.Email,
                     EmailConfirmed = false
                 };
 
-                var result = await UserManager.CreateAsync(newUser, model.Password);
+                var result = await UserManager.CreateAsync(newUser, model.CredentialModel.Password);
 
                 if (result.Succeeded)
                 {
@@ -83,7 +83,7 @@ namespace FixMyCode.Controllers
 
 
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(created);
-                    var callbackUrl = UrlHelper.Action("ConfirmEmail", "account", new { UserId = created.Id, code = code }, UrlHelper.ActionContext.HttpContext.Request.Scheme);
+                    var callbackUrl = UrlHelper.Action("VerifyAccount", "account", new { UserId = created.Id, code = code }, UrlHelper.ActionContext.HttpContext.Request.Scheme);
                     //var callbackUrl = $"http://{}/MyMvc/MyAction?param1=1&param2=somestring";
 
                     EmailService.VerifyEmail(created, callbackUrl);
