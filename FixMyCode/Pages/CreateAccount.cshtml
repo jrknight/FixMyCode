@@ -4,58 +4,57 @@
     ViewData["Title"] = "CreateAccount";
 }
 
-<h2>CreateAccount</h2>
+<h2>@ViewData</h2>
 
 <link rel = "stylesheet" href="site.css" />
 <script src="~/js/site.js"></script>
 
 <div>
-    @using (Html.BeginForm("CreateAccount", "Account", FormMethod.Post))
-    {
-        @Html.Label("Username")
+    <form method="post">
+        <label asp-for="Username">Username</label>
         <br />
-        @Html.TextBoxFor(model => model.Username, htmlAttributes: new { id = "usernameText", onfocusout = "return a()" })
+        <input asp-for="Username" id="usernameText" onfocusout="return a()" />
         <br />
         <label id="usernameLength" style="visibility: collapse">Username must be at least 5 characters long.</label>
+        <br />
 
+        <label asp-for="Email">Email</label>
         <br />
-        @Html.Label("Email")
-        <br />
-        @Html.TextBoxFor(model => model.Email, htmlAttributes: new { id = "emailText", onfocusout = "return b()" })
+        <input asp-for="Email" id="emailText" onfocusout="return b()" />
         <br />
         <label id="emailReal" style="visibility: collapse">Email must be real.</label>
+        <br />
 
+        <label asp-for="Password">Password</label>
         <br />
-        @Html.Label("Password")
-        <br />
-        @Html.PasswordFor(model => model.Password, htmlAttributes: new { id = "passwordText", onfocusout = "return c()" })
+        <input asp-for="Password" type="password" id="passwordText" onfocusout="return c()" />
         <br />
         <label id="passwordCheck" style="visibility: collapse">Password must be at least 8 characters long and include a number.</label>
+        <br />
 
+        <label>Confirm Password</label>
         <br />
-        @Html.Label("Confirm Password")
-        <br />
-        <input type="password" name="confirm_passwd" id="confirm_pw" onfocusout = "return d()" />
+        <input type="password" name="confirm_passwd" id="confirm_pw" onfocusout="return d()" />
         <br />
         <label id="confirmCheck" style="visibility: collapse">Passwords must be the same.</label>
-
-        <br />
-        <input type="checkbox" id="editor_check" onclick="showStuff()" />
-        @Html.Label("Editor")
-
-        <input type="checkbox" id="yes_stbox" onclick="hideStuff()" />
-        @Html.Label("Student")
         <br />
 
+        <input type="checkbox" id="editor_check" />
+        <label>Editor</label>
+
+        <input type="checkbox" id="yes_stbox" />
+        <label>Student</label>
         <br />
-        @Html.Label("Credentials / Grade")
+
         <br />
-        @Html.TextBoxFor(model => model.Credentials)
+        <label asp-for="Credentials">Credentials / Grade</label>
+        <br />
+        <input asp-for="Credentials" />
         <br />
 
         <br />
         <button type="submit" id="submit_create">Submit</button>
-    }
+    </form>
 </div>
 
 
