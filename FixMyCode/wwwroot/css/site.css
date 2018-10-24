@@ -3,8 +3,18 @@ body {
 }
 
 /*Background property not working*/
+<<<<<<< Updated upstream
 div {
+<<<<<<< Updated upstream
     background-color: antiquewhite;
+=======
+    background-color: slategrey;
+=======
+.container body-content {
+    background-image: url(images/qbkls.png);
+    background-repeat: repeat-x;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }
 
 h1 {
