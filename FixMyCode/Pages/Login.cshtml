@@ -1,32 +1,28 @@
 ﻿@page "/account/login"
 @model FixMyCode.Pages.LoginModel
-@{
-    ViewData["Title"] = "Login";
-}
 
 <link rel="stylesheet" href="site.css" />
-
-
-
-@using (Html.BeginForm("Login", "Account", FormMethod.Post))
-{
-
-    <form method="post">
-
-        <label asp-for="Email">Email</label>
-        <br />
-        <input asp-for="Email" />
-        <br />
-
-        <label asp-for="Password">Password</label>
-        <br />
-        <input asp-for="Password" />
-        <br />
-
-        <br />
-        <button type="submit" id="login">Login</button>
-    </form>
+<title>@ViewBag.Title</title>
+@{
+    ViewBag.Title = "Login";
 }
+
+<form method="post">
+
+    <label asp-for="Email">Email</label>
+    <br />
+    <input asp-for="Email" />
+    <br />
+
+    <br />
+    <label asp-for="Password">Password</label>
+    <br />
+    <input asp-for="Password" />
+    <br />
+
+    <br />
+    <button type="submit" id="login">Login</button>
+</form>
 
 
 
