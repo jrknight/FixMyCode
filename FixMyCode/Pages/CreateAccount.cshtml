@@ -1,13 +1,13 @@
 ﻿@page "/Account/Createaccount"
 @model FixMyCode.Pages.CreateAccountModel
+
+<link rel="stylesheet" href="site.css" />
+<script src="~/js/site.js"></script>
+<title>@ViewBag.Title</title>
 @{
-    ViewData["Title"] = "CreateAccount";
+    ViewBag.Title = "Create Account";
 }
 
-<h2>@ViewData</h2>
-
-<link rel = "stylesheet" href="site.css" />
-<script src="~/js/site.js"></script>
 
 <div>
     <form method="post">
@@ -44,6 +44,12 @@
 
         <input type="checkbox" id="yes_stbox" />
         <label>Student</label>
+        <br />
+
+        <br />
+        <label asp-for="Credentials">Credentials / Grade</label>
+        <br />
+        <input asp-for="Credentials" />
         <br />
 
         <br />
