@@ -1,10 +1,22 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home";
-}
+
     
     <link rel="stylesheet" href="site.css">
+    <title>@ViewBag.Title</title>
+    @{ 
+        ViewBag.Title = "Home";
+    }
+    
+    <link rel="stylesheet" href="site.css">
+    
+    
+
+    <div class="buttons">
+        <a class ="button" href="/CreateAccount">Create</a>
+        <br />
+        <a class="button" href="/Login">Login</a>
+    </div>
 
     <div class="info">
         <h1>Students</h1>
