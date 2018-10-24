@@ -20,8 +20,10 @@ namespace FixMyCode.Entities
         public string Code { get; set; }
         [Required]
         public bool IsSolved { get; set; } = false;
-
         [Required]
+        public string StudentId { get; set; }
+
+
         public AppUser Student { get; set; }
     }
 }

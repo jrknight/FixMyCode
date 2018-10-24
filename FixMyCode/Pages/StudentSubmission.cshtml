@@ -1,13 +1,13 @@
 ﻿@page
 @model StudentSubmissionModel
 @{
-    ViewData["Title"] = "StudentSubmission";
+    ViewData["Title"] = "Student Submissions";
 }
 
 <link rel="stylesheet" href="site.css">
 
 <div>
-    @using (Html.BeginForm("StudentSubmission", "StudentSubmission", FormMethod.Post))
+    @using (Html.BeginForm("StudentSubmission", "Submissions", FormMethod.Post))
     {
         @Html.Label("Specific Question")
         <br />
