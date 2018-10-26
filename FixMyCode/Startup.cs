@@ -98,11 +98,11 @@ namespace FixMyCode
                 .GetUrlHelper(x.GetRequiredService<IActionContextAccessor>().ActionContext));
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddRazorPagesOptions(options =>
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);/*.AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizePage("/StudentSubmission");
                     options.Conventions.AuthorizePage("/CodeFix");
-                });
+                });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -137,7 +137,7 @@ namespace FixMyCode
             //adding custom roles
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
-            string[] roleNames = { "Admin", "Editor", "Member" };
+            string[] roleNames = { "Admin", "Editor", "User" };
             IdentityResult roleResult;
 
             foreach (var roleName in roleNames)

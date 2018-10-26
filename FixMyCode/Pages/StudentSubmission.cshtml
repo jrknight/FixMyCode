@@ -7,33 +7,37 @@
 <link rel="stylesheet" href="site.css">
 
 <div>
+    <!--
     @using (Html.BeginForm("StudentSubmission", "Submissions", FormMethod.Post))
     {
         @Html.Label("Specific Question")
-        <br />
-        @Html.TextAreaFor(model => model.Question, htmlAttributes: new { style = "overflow:auto;resize:none;margin-bottom:50px", @rows = 10, @cols = 30 })
-        <br />
+        <br/>
+        @Html.TextAreaFor(model => model.Question, htmlAttributes: new {style = "overflow:auto;resize:none;margin-bottom:50px", @rows = 10, @cols = 30})
+        <br/>
 
         @Html.Label("Your Code")
-        <br />
-        @Html.TextAreaFor(model => model.Code, htmlAttributes: new { style = "overflow:auto;resize:none", @rows = 10, @cols = 30 })
-        <br />
+        <br/>
+        @Html.TextAreaFor(model => model.Code, htmlAttributes: new {style = "overflow:auto;resize:none", @rows = 10, @cols = 30})
+        <br/>
 
         <button type="submit" id="student_submit">Submit</button>
     }
-    
+    -->
     <form>
         <label asp-for="Question">Question about your code</label>
-        <br />
-        <input asp-for="Question" />
+        <br/>
+        <input asp-for="Question"/>
         <span asp-validation-for="Question"></span>
-        <br />
-        
-        <br />
+        <br/>
+
+        <br/>
         <label asp-for="Code">Code</label>
-        <br />
+        <br/>
         <input asp-for="Code"/>
         <span asp-validation-for="Code"></span>
+
+        <button type="submit">Submit</button>
+
 
     </form>
 </div>
