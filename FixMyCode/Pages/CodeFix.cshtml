@@ -1,25 +1,27 @@
 ﻿@page
 @model CodeFixModel
+
+<link rel="stylesheet" href="~/css/style.css">
+<script type="text/javascript" src="~/js/site.js"></script>
+
+<title>@ViewBag.Title</title>
 @{
-    ViewData["Title"] = "CodeFix";
+    ViewBag.Title = "CodeFix";
 }
 
-    <link rel="stylesheet" href="site.css">
-    <script type="text/javascript" src="~/js/site.js"></script>
+<form method="post">
+    <label asp-for="editCode">Edit Code Below</label>
+    <br />
+    <textarea asp-for="editCode" rows="10" cols="30" class="codebox"></textarea>
+    <span asp-validation-for="editCode"></span>
+    <br />
 
-    <div>
-        @using (Html.BeginForm("", "", FormMethod.Post))
-        {
-            @Html.Label("Edit Code Below")
-            <br />
-            @Html.TextAreaFor(model => model.editCode, htmlAttributes: new { style = "overflow:auto;resize:none;margin-bottom:50px", @rows = 10, @cols = 30 })
-            <br />
+    <br />
+    <label asp-for="howFixed">How You Fixed It</label>
+    <br />
+    <textarea asp-for="howFixed" rows="10" cols="30" class="codebox"></textarea>
+    <span asp-validation-for="howFixed"></span>
+    <br />
 
-            @Html.Label("How You Fixed It")
-            <br />
-            @Html.TextAreaFor(model => model.howFixed, htmlAttributes: new { style = "overflow:auto;resize:none", @rows = 10, @cols = 30 })
-            <br />
-
-            <input type="submit" value="Submit">
-        }
-    </div>
+    <input type="submit" value="Submit">
+</form>

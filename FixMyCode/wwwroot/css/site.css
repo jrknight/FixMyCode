@@ -32,16 +32,6 @@ h1 {
     color: antiquewhite;
 }
 
-li:hover {
-    background-color:black;
-    color:antiquewhite;
-}
-
-li:after {
-    background-color:antiquewhite;
-    color:black;
-}
-
 /**/
 
 h2 {
@@ -51,26 +41,4 @@ h2 {
 
 p {
     text-align: center;
-}
-
-.CreateAccountButton {
-    background-color: #5c80bc;
-    font-size: 16px;
-    border-radius: 4px;
-    border: none;
-    width: 110px;
-    padding: 12px 28px;
-    margin-bottom: 10px;
-}
-
-/*applied to all forms*/
-form{
-    position: relative;
-    margin-top: 100px;
-    margin-left: 40%;
-}
-
-/*Index CSHTML*/
-#info {
-    margin-top:10000px;
 }

@@ -1,14 +1,14 @@
 ﻿@page "/Account/Login"
 @model FixMyCode.Pages.LoginModel
 
-<link rel="stylesheet" href="site.css" />
+<link rel="stylesheet" href="~/css/style.css" />
+
 <title>@ViewBag.Title</title>
 @{
     ViewBag.Title = "Login";
 }
 
 <form method="post">
-
     <label asp-for="VerificationModel.Email">Email</label>
     <br />
     <input asp-for="VerificationModel.Email" />
