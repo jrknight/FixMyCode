@@ -7,31 +7,29 @@
 @{
     ViewBag.Title = "Login";
 }
+<div>
+    <form method="post">
+        <label asp-for="VerificationModel.Email">Email</label>
+        <br />
+        <input asp-for="VerificationModel.Email" />
+        <span asp-validation-for="VerificationModel.Email" class="text-danger"></span>
+        <br />
+    
+        <br />
+        <label asp-for="VerificationModel.Password">Password</label>
+        <br />
+        <input asp-for="VerificationModel.Password" type="password"/>
+        <span asp-validation-for="VerificationModel.Password" class="text-danger"></span>
+        <br />
 
-<form method="post">
-    <label asp-for="VerificationModel.Email">Email</label>
-    <br />
-    <input asp-for="VerificationModel.Email" />
-    <span asp-validation-for="VerificationModel.Email" class="text-danger"></span>
-    <br />
-
-<<<<<<< Updated upstream
-    <br />
-    <label asp-for="VerificationModel.Password">Password</label>
-    <br />
-    <input asp-for="VerificationModel.Password" type="password"/>
-    <span asp-validation-for="VerificationModel.Password" class="text-danger"></span>
-    <br />
-
-    <br />
-    <button type="submit" id="login">Login</button>
-</form>
-=======
-
+        <br />
+        <button type="submit" id="login">Login</button>
+    </form>
+</div>
 <!--<div>
     <<form method="post">
 
-       <label asp-for="Email">Email</label>
+        <label asp-for="Email">Email</label>
         <br />
         <input asp-for="Email" />
         <br />
@@ -45,8 +43,4 @@
         <button type="submit" id="login">Login</button>
     </form>
 
- </div>-->
->>>>>>> Stashed changes
-
-
-
+</div>-->
