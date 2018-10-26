@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using FixMyCode.Entities;
 using FixMyCode.Pages;
@@ -20,21 +21,13 @@ namespace FixMyCode.Controllers
         private UserManager<AppUser> UserManager;
         private readonly SignInManager<AppUser> SignInManager;
 
-        public AccountController(UserManager<AppUser> userManager, IEmailService ES, IUrlHelper urlHelper, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager)
         {
             UserManager = userManager;
-            EmailService = ES;
-            UrlHelper = urlHelper;
-            SignInManager = signInManager;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> VerifyAccount(string userId, string code)
+        public async Task<IActionResult> VerifyAccount(string userId, string code, string userType)
         {
             if (userId == null || code == null)
             {
@@ -43,7 +36,10 @@ namespace FixMyCode.Controllers
             var user = await UserManager.FindByIdAsync(userId);
 
             var result = await UserManager.ConfirmEmailAsync(user, code);
-            if (result.Succeeded)
+
+            var claimResult = await UserManager.AddClaimAsync(user, new Claim("usertype", userType));
+
+            if (result.Succeeded && claimResult.Succeeded)
             {
                 return View("Confirmation");
             }

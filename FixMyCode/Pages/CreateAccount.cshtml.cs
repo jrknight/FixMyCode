@@ -72,10 +72,10 @@ namespace FixMyCode.Pages
 
 
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(created);
-                    var callbackUrl = UrlHelper.Action("VerifyAccount", "Account", new { UserId = created.Id, code = code }, UrlHelper.ActionContext.HttpContext.Request.Scheme);
+                    var callbackUrl = UrlHelper.Action("VerifyAccount", "Account", new { UserId = created.Id, code = code, userType = "student" }, UrlHelper.ActionContext.HttpContext.Request.Scheme);
                     //var callbackUrl = $"http://{}/MyMvc/MyAction?param1=1&param2=somestring";
 
-                    EmailService.VerifyEmail(created, callbackUrl);
+                    EmailService.VerifyEmail(created, callbackUrl, "student");
 
                     return RedirectToPage("Confirmation");
                 }
