@@ -48,7 +48,7 @@ namespace FixMyCode.Pages
             }
 
             
-            return RedirectToPage("/");
+            return Redirect("/");
         }
 
     }
