@@ -1,24 +1,35 @@
 ﻿@page
 @model IndexModel
 
+<head>
+    <meta name="viewport" content="width=device-width" />
 
-<link href="~/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/css/style.css" />
 
-<title>@ViewBag.Title</title>
-@{
-    ViewBag.Title = "Home";
-}
+    <title>@ViewBag.Title</title>
+    @{
+        ViewBag.Title = "Home";
+    }
+</head>
 
 <body>
-    <div class="main">
-        <h1>Students</h1>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Fix My Code</h1>
+            <p>A website for the losers that don't know how to navigate google or stack overflow. Like seriously? We legitamently provide nothing right now.</p>
+        </div>
+    </section>
+
+    <section class="main">
+        <a asp-page="/StudentSubmission" id="bottom" class="indexheader">Student</a>
         <p>
             Having trouble with programming? Need some help with your code?
             Here you can submit your code to one of our editors and have it fixed with an explanation of the errors.
         </p>
         <br />
 
-        <h1>Editors</h1>
+        <a asp-page="/CodeFix" class="indexheader">Editor</a>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -26,11 +37,17 @@
         </p>
         <br />
 
-        <h1>Teachers</h1>
+        <a asp-page="" class="indexheader">Teachers</a>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
         </p>
-    </div>
+    </section>
+
+    <div id="end" />
+
+    <footer class="footer">
+        <p>&copy; 2018 - FixMyCode</p>
+    </footer>
 </body>

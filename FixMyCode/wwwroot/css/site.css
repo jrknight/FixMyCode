@@ -2,38 +2,6 @@ body {
     position:relative;
 }
 
-/*Background property not working*/
-<<<<<<< Updated upstream
-div {
-<<<<<<< Updated upstream
-    background-color: antiquewhite;
-=======
-    background-color: slategrey;
-=======
-.container body-content {
-    background-image: url(images/qbkls.png);
-    background-repeat: repeat-x;
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-}
-
-h1 {
-    color: black;
-    text-align: center;
-}
-
-/*Where the top navigation bar settings go*/
-.navbar-collapse {
-    background-color: antiquewhite;
-}
-
-.navbar-header:hover {
-    background-color: pink;
-    color: antiquewhite;
-}
-
-/**/
-
 h2 {
     color: #4d5061;
     text-align: center;
