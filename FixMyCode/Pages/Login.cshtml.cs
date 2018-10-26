@@ -36,18 +36,22 @@ namespace FixMyCode.Pages
         {
             var user = await UserManager.FindByEmailAsync(VerificationModel.Email);
 
-            var login = await SignInManager.PasswordSignInAsync(user, VerificationModel.Password, true, false);
-
-            if (login.Succeeded)
+            if (user != null)
             {
-                return Redirect("/");
-            }
-            else if (login.IsNotAllowed)
-            {
-                return RedirectToPage("Error");
+                var login = await SignInManager.PasswordSignInAsync(user, VerificationModel.Password, true, false);
+
+                if (login.Succeeded)
+                {
+                    var roles = await UserManager.GetRolesAsync(user);
+
+                    return Redirect("/Submissions/StudentSubmission");//roles.Contains("Student") ? Redirect("/StudentSubmission") : Redirect("/Browse");
+                }
+                else if (login.IsNotAllowed)
+                {
+                    return RedirectToPage("Error");
+                }
             }
 
-            
             return Redirect("/");
         }
 

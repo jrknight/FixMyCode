@@ -15,17 +15,14 @@ namespace FixMyCode.Controllers
     [Route("Account")]
     public class AccountController : Controller
     {
-
-        private IEmailService EmailService;
-        private IUrlHelper UrlHelper;
-        private UserManager<AppUser> UserManager;
-        private readonly SignInManager<AppUser> SignInManager;
+        
+        private readonly UserManager<AppUser> UserManager;
 
         public AccountController(UserManager<AppUser> userManager)
         {
             UserManager = userManager;
         }
-
+        
         [HttpGet]
         public async Task<IActionResult> VerifyAccount(string userId, string code, string userType)
         {
@@ -37,9 +34,7 @@ namespace FixMyCode.Controllers
 
             var result = await UserManager.ConfirmEmailAsync(user, code);
 
-            var claimResult = await UserManager.AddClaimAsync(user, new Claim("usertype", userType));
-
-            if (result.Succeeded && claimResult.Succeeded)
+            if (result.Succeeded)
             {
                 return View("Confirmation");
             }
@@ -55,7 +50,7 @@ namespace FixMyCode.Controllers
 
             if (!ModelState.IsValid)
             {
-                //TODO: Get Student information in this shit
+                
                 return View("Error");
                 
             }

@@ -9,8 +9,8 @@ namespace FixMyCode.Services
 {
     public interface IUserRepository
     {
-        void AddStudentAsync(string Name, string Email);
-        void AddReviewerAsync(string Name, string Credential, string Email);
+        Task<IdentityResult> AddUserAsync(AppUser user, string password);
+        Task<IdentityResult> AddEditorAsync(AppUser user, string password, string credential);
         Task<AppUser> GetUser(string Email);
     }
 }

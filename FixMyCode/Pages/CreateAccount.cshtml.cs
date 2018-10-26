@@ -10,21 +10,25 @@ using FixMyCode.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace FixMyCode.Pages
 {
     public class CreateAccountModel : PageModel
     {
-
         private IEmailService EmailService;
         private IUrlHelper UrlHelper;
+        private IUserRepository UserRepository;
         private UserManager<AppUser> UserManager;
 
-        public CreateAccountModel(UserManager<AppUser> userManager, IEmailService ES, IUrlHelper urlHelper)
+
+
+        public CreateAccountModel(IUserRepository userRepository, IEmailService ES, IUrlHelper urlHelper, UserManager<AppUser> userManager)
         {
-            UserManager = userManager;
+            UserRepository = userRepository;
             EmailService = ES;
             UrlHelper = urlHelper;
+            UserManager = userManager;
         }
 
 
@@ -64,7 +68,7 @@ namespace FixMyCode.Pages
                     EmailConfirmed = false
                 };
 
-                var result = await UserManager.CreateAsync(newUser, CredentialModel.Password);
+                var result = await UserRepository.AddUserAsync(newUser, CredentialModel.Password);//UserManager.CreateAsync(newUser, CredentialModel.Password);
 
                 if (result.Succeeded)
                 {
@@ -81,12 +85,14 @@ namespace FixMyCode.Pages
                 }
                 else
                 {
+                    await UserManager.RemoveFromRoleAsync(newUser, "User");
                     await UserManager.DeleteAsync(newUser);
-                    return BadRequest();
+                    
+                    return RedirectToPage("Error");
                 }
             }
 
-            return BadRequest();
+            return RedirectToPage("Error");
         }
     }
 }

@@ -20,19 +20,38 @@ namespace FixMyCode.Services
             userManager = userMgr;
         }
 
-        public async void AddReviewerAsync(string UserName, string Credential, string Email)
+        public async Task<IdentityResult> AddEditorAsync(AppUser user, string password, string Credential)
         {
-            AppUser reviewer = new AppUser { Email = Email, UserName = UserName };
+            var result = userManager.CreateAsync(user, password);
 
-            await userManager.AddClaimAsync(reviewer, new Claim("usertype", "reviewer"));
+            var reviewer = await userManager.FindByEmailAsync(user.Email);
 
+            if (result.IsCompletedSuccessfully)
+            {
+                await userManager.AddToRoleAsync(user, "Editor");
+                await userManager.AddClaimAsync(reviewer, new Claim("Credential", Credential));
+
+                return await result;
+            }
+
+            return await result;
         }
 
-        public async void AddStudentAsync(string UserName, string Email)
+        public async Task<IdentityResult> AddUserAsync(AppUser user, string password)
         {
-            AppUser student = new AppUser { Email = Email, UserName = UserName };
+            var result = userManager.CreateAsync(user, password);
 
-            await userManager.AddClaimAsync(student, new Claim("usertype", "student"));
+            var created = await userManager.FindByEmailAsync(user.Email);
+
+            if (result.IsCompletedSuccessfully)
+            {
+                await userManager.AddToRoleAsync(created, "User");
+
+
+                return await result;
+            }
+
+            return await result;
         }
 
         public async Task<AppUser> GetUser(string Email)
