@@ -342,5 +342,28 @@
     <Content Remove="wwwroot\src-noconflict\worker-php.js" />
     <Content Remove="wwwroot\src-noconflict\worker-xml.js" />
     <Content Remove="wwwroot\src-noconflict\worker-xquery.js" />
+    <Content Remove="wwwroot\aceConfiguration\ace.js" />
+    <Content Remove="wwwroot\aceConfiguration\mode-java.js" />
+    <Content Remove="wwwroot\aceConfiguration\ext-language_tools.js" />
+    <Content Remove="wwwroot\aceConfiguration\ext-keybinding_menu.js" />
+    <Content Remove="wwwroot\aceConfiguration\ext-error_marker.js" />
+    <Content Remove="wwwroot\aceConfiguration\ext-emmet.js" />
+    <Content Remove="wwwroot\aceConfiguration\ext-elastic_tabstops_lite.js" />
+    <Content Remove="wwwroot\aceConfiguration\ext-beautify.js" />
+    <Content Remove="wwwroot\aceConfiguration\show_own_source.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\aceConfiguration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\aceConfiguration\ace.js" />
+    <None Include="wwwroot\aceConfiguration\mode-java.js" />
+    <None Include="wwwroot\aceConfiguration\ext-language_tools.js" />
+    <None Include="wwwroot\aceConfiguration\ext-keybinding_menu.js" />
+    <None Include="wwwroot\aceConfiguration\ext-error_marker.js" />
+    <None Include="wwwroot\aceConfiguration\ext-emmet.js" />
+    <None Include="wwwroot\aceConfiguration\ext-elastic_tabstops_lite.js" />
+    <None Include="wwwroot\aceConfiguration\ext-beautify.js" />
+    <None Include="wwwroot\aceConfiguration\show_own_source.js" />
   </ItemGroup>
 </Project>
