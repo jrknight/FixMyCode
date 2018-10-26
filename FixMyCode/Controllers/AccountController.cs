@@ -51,7 +51,7 @@ namespace FixMyCode.Controllers
             return View("Index");
         }
 
-        [HttpPost("CreateAccount")]
+        /*[HttpPost("CreateAccount")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateAccount(CreateAccountModel model)
         {
@@ -98,9 +98,9 @@ namespace FixMyCode.Controllers
             }
 
             return View(model);
-        }
+        }*/
 
-        [HttpPost("Login")]
+        /*[HttpPost("Login")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
@@ -119,7 +119,7 @@ namespace FixMyCode.Controllers
 
             
             return View();
-        }
+        }*/
 
     }
 }

@@ -29,7 +29,6 @@ namespace FixMyCode.Pages
 
 
         [BindProperty]
-        [Required]
         public CredentialModel CredentialModel { get; set; }
 
         //When the page is loaded
