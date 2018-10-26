@@ -1,4 +1,4 @@
-﻿@page "/Account/Login"
+@page "/Account/Login"
 @model FixMyCode.Pages.LoginModel
 
 <link rel="stylesheet" href="~/css/style.css" />
@@ -15,6 +15,7 @@
     <span asp-validation-for="VerificationModel.Email" class="text-danger"></span>
     <br />
 
+<<<<<<< Updated upstream
     <br />
     <label asp-for="VerificationModel.Password">Password</label>
     <br />
@@ -25,6 +26,27 @@
     <br />
     <button type="submit" id="login">Login</button>
 </form>
+=======
+
+<!--<div>
+    <<form method="post">
+
+       <label asp-for="Email">Email</label>
+        <br />
+        <input asp-for="Email" />
+        <br />
+
+        <label asp-for="Password">Password</label>
+        <br />
+        <input asp-for="Password" />
+        <br />
+
+        <br />
+        <button type="submit" id="login">Login</button>
+    </form>
+
+ </div>-->
+>>>>>>> Stashed changes
 
 
 
