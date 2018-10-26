@@ -1,4 +1,4 @@
-﻿@page "/account/login"
+﻿@page "/Account/Login"
 @model FixMyCode.Pages.LoginModel
 
 <link rel="stylesheet" href="site.css" />
@@ -9,15 +9,17 @@
 
 <form method="post">
 
-    <label asp-for="Email">Email</label>
+    <label asp-for="VerificationModel.Email">Email</label>
     <br />
-    <input asp-for="Email" />
+    <input asp-for="VerificationModel.Email" />
+    <span asp-validation-for="VerificationModel.Email" class="text-danger"></span>
     <br />
 
     <br />
-    <label asp-for="Password">Password</label>
+    <label asp-for="VerificationModel.Password">Password</label>
     <br />
-    <input asp-for="Password" />
+    <input asp-for="VerificationModel.Password" type="password"/>
+    <span asp-validation-for="VerificationModel.Password" class="text-danger"></span>
     <br />
 
     <br />

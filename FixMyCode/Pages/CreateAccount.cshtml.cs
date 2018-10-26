@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using FixMyCode.Entities;
+using FixMyCode.Models;
 using FixMyCode.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,6 @@ namespace FixMyCode.Pages
         private IUrlHelper UrlHelper;
         private UserManager<AppUser> UserManager;
 
-
         public CreateAccountModel(UserManager<AppUser> userManager, IEmailService ES, IUrlHelper urlHelper)
         {
             UserManager = userManager;
@@ -29,23 +29,7 @@ namespace FixMyCode.Pages
 
 
         [BindProperty]
-        [Required]
-        public string Username { get; set; }
-
-        [BindProperty]
-        [Required]
-        public string Email { get; set; }
-
-        [BindProperty]
-        [Required]
-        public string Password { get; set; }
-
-        [BindProperty]
-        [Required]
-        public string ConfirmPassword { get; set; }
-
-        [BindProperty]
-        public string Credentials { get; set; }
+        public CredentialModel CredentialModel { get; set; }
 
         //When the page is loaded
         public void OnGet()
@@ -64,23 +48,23 @@ namespace FixMyCode.Pages
 
             }
 
-            if (Password != ConfirmPassword)
+            if (CredentialModel.Password != CredentialModel.ConfirmPassword)
             {
                 return BadRequest();
             }
 
-            var user = await UserManager.FindByEmailAsync(Email);
+            var user = await UserManager.FindByEmailAsync(CredentialModel.Email);
 
             if (user == null)
             {
                 var newUser = new AppUser()
                 {
-                    UserName = Username,
-                    Email = Email,
+                    UserName = CredentialModel.Username,
+                    Email = CredentialModel.Email,
                     EmailConfirmed = false
                 };
 
-                var result = await UserManager.CreateAsync(newUser, Password);
+                var result = await UserManager.CreateAsync(newUser, CredentialModel.Password);
 
                 if (result.Succeeded)
                 {
@@ -88,10 +72,10 @@ namespace FixMyCode.Pages
 
 
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(created);
-                    var callbackUrl = UrlHelper.Action("VerifyAccount", "Account", new { UserId = created.Id, code = code }, UrlHelper.ActionContext.HttpContext.Request.Scheme);
+                    var callbackUrl = UrlHelper.Action("VerifyAccount", "Account", new { UserId = created.Id, code = code, userType = "student" }, UrlHelper.ActionContext.HttpContext.Request.Scheme);
                     //var callbackUrl = $"http://{}/MyMvc/MyAction?param1=1&param2=somestring";
 
-                    EmailService.VerifyEmail(created, callbackUrl);
+                    EmailService.VerifyEmail(created, callbackUrl, "student");
 
                     return RedirectToPage("Confirmation");
                 }

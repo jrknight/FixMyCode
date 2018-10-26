@@ -1,4 +1,4 @@
-﻿@page "/account/createaccount"
+﻿@page "/Account/Createaccount"
 @model FixMyCode.Pages.CreateAccountModel
 
 <link rel="stylesheet" href="site.css" />
@@ -11,43 +11,39 @@
 
 <div>
     <form method="post">
-        <label asp-for="Username">Username</label>
+        <label asp-for="CredentialModel.Username">Username</label>
         <br />
-        <input asp-for="Username" id="usernameText" onfocusout="return a()" />
+        <input asp-for="CredentialModel.Username" id="usernameText" onfocusout="return a()" />
+        <span asp-validation-for="CredentialModel.Username" class="text-danger"></span>
         <br />
         <label id="usernameLength" style="visibility: collapse">Username must be at least 5 characters long.</label>
         <br />
 
-        <label asp-for="Email">Email</label>
+        <label asp-for="CredentialModel.Email">Email</label>
         <br />
-        <input asp-for="Email" id="emailText" onfocusout="return b()" />
+        <input asp-for="CredentialModel.Email" id="emailText" onfocusout="return b()" />
+        <span asp-validation-for="CredentialModel.Email" class="text-danger"></span>
         <br />
         <label id="emailReal" style="visibility: collapse">Email must be real.</label>
         <br />
 
-        <label asp-for="Password">Password</label>
+        <label asp-for="CredentialModel.Password">Password</label>
         <br />
-        <input asp-for="Password" type="password" id="passwordText" onfocusout="return c()" />
+        <input asp-for="CredentialModel.Password" type="password" id="passwordText" onfocusout="return c()" />
+        <span asp-validation-for="CredentialModel.Password" class="text-danger"></span>
         <br />
         <label id="passwordCheck" style="visibility: collapse">Password must be at least 8 characters long and include a number.</label>
         <br />
 
-        <label>Confirm Password</label>
+        <label asp-for="CredentialModel.ConfirmPassword">Confirm Password</label>
         <br />
-        <input type="password" name="confirm_passwd" id="confirm_pw" onfocusout="return d()" />
+        <input asp-for="CredentialModel.ConfirmPassword" type="password" onfocusout="return d()" />
+        <span asp-validation-for="CredentialModel.ConfirmPassword" class="text-danger"></span>
         <br />
         <label id="confirmCheck" style="visibility: collapse">Passwords must be the same.</label>
-        <br />
-
-        <label asp-for="Credentials">Credentials / Grade</label>
-        <br />
-        <input asp-for="Credentials" />
         <br />
 
         <br />
         <button type="submit" id="submit_create">Submit</button>
     </form>
 </div>
-
-
-

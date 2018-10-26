@@ -39,7 +39,7 @@ namespace FixMyCode.Services
             
         }
 
-        public async void VerifyEmail(AppUser user, string callbackUrl)
+        public async void VerifyEmail(AppUser user, string callbackUrl, string userType)
         {
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);

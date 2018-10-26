@@ -9,6 +9,6 @@ namespace FixMyCode.Services
     public interface IEmailService
     {
         void EmailStudent(string emailAddress);
-        void VerifyEmail(AppUser user, string callbackUrl);
+        void VerifyEmail(AppUser user, string callbackUrl, string userType);
     }
 }

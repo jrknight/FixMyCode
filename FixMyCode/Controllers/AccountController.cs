@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using FixMyCode.Entities;
 using FixMyCode.Pages;
@@ -20,21 +21,13 @@ namespace FixMyCode.Controllers
         private UserManager<AppUser> UserManager;
         private readonly SignInManager<AppUser> SignInManager;
 
-        public AccountController(UserManager<AppUser> userManager, IEmailService ES, IUrlHelper urlHelper, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager)
         {
             UserManager = userManager;
-            EmailService = ES;
-            UrlHelper = urlHelper;
-            SignInManager = signInManager;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet("ConfirmEmail")]
-        public async Task<IActionResult> VerifyAccount(string userId, string code)
+        [HttpGet]
+        public async Task<IActionResult> VerifyAccount(string userId, string code, string userType)
         {
             if (userId == null || code == null)
             {
@@ -43,15 +36,18 @@ namespace FixMyCode.Controllers
             var user = await UserManager.FindByIdAsync(userId);
 
             var result = await UserManager.ConfirmEmailAsync(user, code);
-            if (result.Succeeded)
+
+            var claimResult = await UserManager.AddClaimAsync(user, new Claim("usertype", userType));
+
+            if (result.Succeeded && claimResult.Succeeded)
             {
                 return View("Confirmation");
             }
             
-            return View();
+            return View("Index");
         }
 
-        [HttpPost("CreateAccount")]
+        /*[HttpPost("CreateAccount")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateAccount(CreateAccountModel model)
         {
@@ -64,18 +60,18 @@ namespace FixMyCode.Controllers
                 
             }
 
-            var user = await UserManager.FindByEmailAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.CredentialModel.Email);
 
             if (user == null)
             {
                 var newUser = new AppUser()
                 {
-                    UserName = model.Username,
-                    Email = model.Email,
+                    UserName = model.CredentialModel.Username,
+                    Email = model.CredentialModel.Email,
                     EmailConfirmed = false
                 };
 
-                var result = await UserManager.CreateAsync(newUser, model.Password);
+                var result = await UserManager.CreateAsync(newUser, model.CredentialModel.Password);
 
                 if (result.Succeeded)
                 {
@@ -83,7 +79,7 @@ namespace FixMyCode.Controllers
 
 
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(created);
-                    var callbackUrl = UrlHelper.Action("ConfirmEmail", "account", new { UserId = created.Id, code = code }, UrlHelper.ActionContext.HttpContext.Request.Scheme);
+                    var callbackUrl = UrlHelper.Action("VerifyAccount", "account", new { UserId = created.Id, code = code }, UrlHelper.ActionContext.HttpContext.Request.Scheme);
                     //var callbackUrl = $"http://{}/MyMvc/MyAction?param1=1&param2=somestring";
 
                     EmailService.VerifyEmail(created, callbackUrl);
@@ -98,9 +94,9 @@ namespace FixMyCode.Controllers
             }
 
             return View(model);
-        }
+        }*/
 
-        [HttpPost("Login")]
+        /*[HttpPost("Login")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
@@ -119,7 +115,7 @@ namespace FixMyCode.Controllers
 
             
             return View();
-        }
+        }*/
 
     }
 }
