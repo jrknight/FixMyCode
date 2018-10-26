@@ -6,3 +6,41 @@
 
 <h2>Browse</h2>
 
+<div>
+    <form>
+        <div class="form-group">
+            <label for="inputSpeaker" class="col-sm-2 control-label">
+                Speaker
+            </label>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+
+        <table class="table table-bordered table-condensed table-hover">
+            <tr class="warning">
+                <td>Question</td>
+                <td>Username</td>
+                <td>Code Preview</td>
+            </tr>
+            @for (int i = 0; i < BrowseModel.Queries.Count(); i++)
+             {
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(it => BrowseModel.Queries.ElementAt(i).Question)
+                        @Html.HiddenFor(it => BrowseModel.Queries.ElementAt(i).Question)
+                    </td>
+                    <td>
+                        @BrowseModel.Queries.ElementAt(i).Student.UserName
+                        @Html.HiddenFor(it => BrowseModel.Queries.ElementAt(i).Student.UserName)
+                    </td>
+                    <td>
+                        @BrowseModel.Queries.ElementAt(i).Student.Email
+                        @Html.HiddenFor(it => BrowseModel.Queries.ElementAt(i).Student.Email)
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </form>
+</div>

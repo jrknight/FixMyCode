@@ -63,7 +63,7 @@ namespace FixMyCode
                 o.Password.RequireDigit = true;
                 o.Password.RequireNonAlphanumeric = false;
                 o.Password.RequiredLength = 8;
-                o.SignIn.RequireConfirmedEmail = true;
+                o.SignIn.RequireConfirmedEmail = false;
                 })
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<FixMyCodeDbContext>();
@@ -71,9 +71,9 @@ namespace FixMyCode
             services.ConfigureApplicationCookie(options =>
             {
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-                options.Cookie.Name = "YourAppCookieName";
+                options.Cookie.Name = "FixMyCodeCookie";
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.ExpireTimeSpan = TimeSpan.FromDays(30);
                 options.LoginPath = "/account/login";
                 options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
                 options.SlidingExpiration = true;
@@ -97,11 +97,16 @@ namespace FixMyCode
                 .GetRequiredService<IUrlHelperFactory>()
                 .GetUrlHelper(x.GetRequiredService<IActionContextAccessor>().ActionContext));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizePage("/StudentSubmission");
+                    options.Conventions.AuthorizePage("/CodeFix");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -113,6 +118,7 @@ namespace FixMyCode
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -120,6 +126,49 @@ namespace FixMyCode
             app.UseMvc(r => {
                 r.MapRoute("default", "{controller}/{action}/{id?}");
             });
+
+            CreateRoles(serviceProvider).Wait();
+
+        }
+
+
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            //adding custom roles
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
+            string[] roleNames = { "Admin", "Editor", "Member" };
+            IdentityResult roleResult;
+
+            foreach (var roleName in roleNames)
+            {
+                //creating the roles and seeding them to the database
+                var roleExist = await roleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    roleResult = await roleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
+
+            //creating a super user who could maintain the web app
+            var poweruser = new AppUser
+            {
+                UserName = Configuration.GetSection("UserSettings")["UserEmail"],
+                Email = Configuration.GetSection("UserSettings")["UserEmail"]
+            };
+
+
+            string UserPassword = Configuration.GetSection("UserSettings")["UserPassword"];
+            var _user = await userManager.FindByEmailAsync(Configuration.GetSection("UserSettings")["UserEmail"]);
+            
+            if(_user == null)
+            {
+                var createPowerUser = await userManager.CreateAsync(poweruser, UserPassword);
+                if (createPowerUser.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(poweruser, "Admin");
+                }
+            }
         }
     }
 }

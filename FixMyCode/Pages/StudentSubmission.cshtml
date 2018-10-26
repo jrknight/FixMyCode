@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/Submissions/StudentSubmission"
 @model StudentSubmissionModel
 @{
     ViewData["Title"] = "Student Submissions";
@@ -20,7 +20,20 @@
         <br />
 
         <button type="submit" id="student_submit">Submit</button>
-
-
     }
+    
+    <form>
+        <label asp-for="Question">Question about your code</label>
+        <br />
+        <input asp-for="Question" />
+        <span asp-validation-for="Question"></span>
+        <br />
+        
+        <br />
+        <label asp-for="Code">Code</label>
+        <br />
+        <input asp-for="Code"/>
+        <span asp-validation-for="Code"></span>
+
+    </form>
 </div>

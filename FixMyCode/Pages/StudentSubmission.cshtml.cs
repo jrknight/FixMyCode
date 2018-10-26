@@ -22,9 +22,10 @@ namespace FixMyCode.Pages
             QueryRepository = queryRepository;
         }
 
-        [Required]
+        
+        [BindProperty]
         public string Question { get; set; }
-        [Required]
+        [BindProperty]
         public string Code { get; set; }
 
         //When the page is loaded
@@ -33,16 +34,16 @@ namespace FixMyCode.Pages
             
         }
 
-        public async Task<IActionResult> OnPost(StudentSubmissionModel model)
+        public async Task<IActionResult> OnPost()
         {
             Debug.WriteLine("Controller Activated");
 
             if (ModelState.IsValid)
             {
-                //TODO: Get Student information in this shit
+                
                 var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                Query q = new Query { Date = DateTime.Now, Question = model.Question, Code = model.Code, StudentId = userId };
+                Query q = new Query { Date = DateTime.Now, Question = Question, Code = Code, StudentId = userId };
                 QueryRepository.AddQuery(q);
 
 
