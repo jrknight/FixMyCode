@@ -1,22 +1,21 @@
 ﻿@page
 @model IndexModel
 
-    
-    <link rel="stylesheet" href="site.css">
-    <title>@ViewBag.Title</title>
-    @{ 
-        ViewBag.Title = "Home";
-    }
-    
-    <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="~/css/style.css">
 
-    <div id="info">
+<title>@ViewBag.Title</title>
+@{
+    ViewBag.Title = "Home";
+}
+
+<body>
+    <div  class="main">
         <h1>Students</h1>
         <p>
-            Having trouble with programming? Need some help with your code? 
+            Having trouble with programming? Need some help with your code?
             Here you can submit your code to one of our editors and have it fixed with an explanation of the errors.
         </p>
-            <br />
+        <br />
 
         <h1>Editors</h1>
         <p>
@@ -24,7 +23,7 @@
             dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
         </p>
-            <br />
+        <br />
 
         <h1>Teachers</h1>
         <p>
@@ -33,3 +32,4 @@
             dolore magna aliqua.
         </p>
     </div>
+</body>
