@@ -6,7 +6,9 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using FixMyCode.Entities;
+using FixMyCode.Models;
 using FixMyCode.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -16,17 +18,18 @@ namespace FixMyCode.Pages
     {
 
         private IQueryRepository QueryRepository;
+        private UserManager<AppUser> UserManager;
 
-        public StudentSubmissionModel(IQueryRepository queryRepository)
+        public StudentSubmissionModel(IQueryRepository queryRepository, UserManager<AppUser> userManager)
         {
             QueryRepository = queryRepository;
+            UserManager = userManager;
         }
 
-        
+        private Task<AppUser> GetCurrentUserAsync() => UserManager.GetUserAsync(HttpContext.User);
+
         [BindProperty]
-        public string Question { get; set; }
-        [BindProperty]
-        public string Code { get; set; }
+        public QueryModel QueryModel { get; set; }
 
         //When the page is loaded
         public void OnGet()
@@ -40,10 +43,11 @@ namespace FixMyCode.Pages
 
             if (ModelState.IsValid)
             {
-                
-                var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                Query q = new Query { Date = DateTime.Now, Question = Question, Code = Code, StudentId = userId };
+                var user = await GetCurrentUserAsync();
+                
+
+                Query q = new Query { Date = DateTime.Now, Question = QueryModel.Question, Code = QueryModel.Code, StudentId = user.Id };
                 QueryRepository.AddQuery(q);
 
 

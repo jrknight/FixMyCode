@@ -33,7 +33,7 @@ namespace FixMyCode.Controllers
             return View();
         }
 
-        [HttpPost("StudentSubmission")]
+        /*[HttpPost("StudentSubmission")]
         public async Task<IActionResult> StudentSubmission(StudentSubmissionModel model)
         {
             Debug.WriteLine("Controller Activated");
@@ -53,6 +53,6 @@ namespace FixMyCode.Controllers
                 return View("Error");
             }
             return View("Confirmation");
-        }
+        }*/
     }
 }

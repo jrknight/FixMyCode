@@ -8,18 +8,20 @@
 
 <div>
     
-    <form>
-        <label asp-for="Question">Question about your code</label>
+    <form method="post">
+        <label asp-for="QueryModel.Question">Question about your code</label>
         <br/>
-        <input asp-for="Question"/>
-        <span asp-validation-for="Question"></span>
+        <input asp-for="QueryModel.Question"/>
+        <span asp-validation-for="QueryModel.Question"></span>
         <br/>
 
         <br/>
-        <label asp-for="Code">Code</label>
+        <label asp-for="QueryModel.Code">Code</label>
         <br/>
-        <input asp-for="Code"/>
-        <span asp-validation-for="Code"></span>
+        <input asp-for="QueryModel.Code"/>
+        <span asp-validation-for="QueryModel.Code"></span>
+        
+        <br />
 
         <button type="submit">Submit</button>
 

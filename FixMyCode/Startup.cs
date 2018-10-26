@@ -98,7 +98,8 @@ namespace FixMyCode
                 .GetUrlHelper(x.GetRequiredService<IActionContextAccessor>().ActionContext));
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);/*.AddRazorPagesOptions(options =>
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1); /*.AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizePage("/StudentSubmission");
                     options.Conventions.AuthorizePage("/CodeFix");
