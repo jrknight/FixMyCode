@@ -124,6 +124,7 @@ namespace FixMyCode
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+
             app.UseMvc(r => {
                 r.MapRoute("default", "{controller}/{action}/{id?}");
             });

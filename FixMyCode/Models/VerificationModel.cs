@@ -11,7 +11,10 @@ namespace FixMyCode.Models
         [Required]
         public string  Email { get; set; }
 
-        [Required]
+        [Required, DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public bool RememberMe { get; set; }
+
     }
 }
