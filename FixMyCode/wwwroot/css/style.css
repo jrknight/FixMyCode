@@ -44,15 +44,9 @@ form{
 
 /* Index Headers*/
 .indexheader {
-    color: #000000;
-    text-decoration: none;
+    color: black;
     font-size: 300%;
 }
-
-    .indexheader:hover {
-        color: #000000;
-    }
-
 /**/
 
 /* End */

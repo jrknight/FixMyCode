@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 namespace FixMyCode
 {
     public class FixMyCodeDbContext : IdentityDbContext<AppUser>
-    {
-
+	{
         public FixMyCodeDbContext(DbContextOptions<FixMyCodeDbContext> options) : base(options)
         {
 
