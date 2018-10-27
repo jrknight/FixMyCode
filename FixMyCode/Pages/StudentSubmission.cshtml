@@ -1,32 +1,45 @@
 ﻿@page "/Submissions/StudentSubmission"
 @model StudentSubmissionModel
-@{
-    ViewData["Title"] = "Student Submissions";
-}
 
-<link rel="stylesheet" href="~/css/style.css">
+<head>
+    <meta name="viewport" content="width=device-width;height=device-height" />
 
-<div>
-    
-    <form>
+    <link rel="stylesheet" href="~/css/style.css" />
+
+    <title>@ViewBag.Title</title>
+    @{
+        ViewBag.Title = "Student Submissions";
+    }
+</head>
+
+<body>
+    <form method="post">
         <label asp-for="QueryModel.Question">Question about your code</label>
         <br />
-        <input asp-for="QueryModel.Question" />
+        <textarea asp-for="QueryModel.Question" rows="10" cols="30" class="codebox"></textarea>
         <span asp-validation-for="QueryModel.Question"></span>
         <br />
+
         <br />
         <label asp-for="QueryModel.Code">Code</label>
         <br />
-        <input asp-for="QueryModel.Code" />
+        <textarea asp-for="QueryModel.Code" rows="10" cols="30" class="codebox"></textarea>
         <span asp-validation-for="QueryModel.Code"></span>
-        <button type="submit">Submit</button>
+        <br />
 
+        <button type="submit">Submit</button>
     </form>
+
+    <div id="end" />
+
+    <footer class="footer" style="margin-top: 4%">
+        <p>&copy; 2018 - FixMyCode</p>
+    </footer>
+</body>
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Editor</title>
         <style type="text/css" media="screen">
 
             .ace_editor {
@@ -57,11 +70,7 @@
 
             #editor {
                 width: 100%;
-                min-width: 100%
-            }
-
-            body {
-                background: #a9bfc7;
+                min-width: 100%;
             }
 
 
@@ -89,8 +98,6 @@
         </script>
         <script src="./show_own_source.js"></script>
     </body>
-
-
     
 
 

@@ -1,51 +1,44 @@
 @page "/Account/Login"
 @model FixMyCode.Pages.LoginModel
 
-<link rel="stylesheet" href="~/css/style.css" />
+<head>
+    <meta name="viewport" content="width=device-width;height=device-height" />
 
-<title>@ViewBag.Title</title>
-@{
-    ViewBag.Title = "Login";
-}
-<div>
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <title>@ViewBag.Title</title>
+    @{
+        ViewBag.Title = "Login";
+    }
+</head>
+
+<body>
     <form method="post">
         <label asp-for="VerificationModel.Email">Email</label>
         <br />
         <input asp-for="VerificationModel.Email" />
         <span asp-validation-for="VerificationModel.Email" class="text-danger"></span>
         <br />
-    
+
         <br />
         <label asp-for="VerificationModel.Password">Password</label>
         <br />
-        <input asp-for="VerificationModel.Password" type="password"/>
+        <input asp-for="VerificationModel.Password" type="password" />
         <span asp-validation-for="VerificationModel.Password" class="text-danger"></span>
         <br />
 
         <br />
-        <input  asp-for="VerificationModel.RememberMe" type="checkbox"  />
-        <label  asp-for="VerificationModel.RememberMe">Remember Me?</label>
-        <br />
-
-        <br />
-        <button type="submit" id="login">Login</button>
-    </form>
-</div>
-<!--<div>
-    <<form method="post">
-
-        <label asp-for="Email">Email</label>
-        <br />
-        <input asp-for="Email" />
-        <br />
-
-        <label asp-for="Password">Password</label>
-        <br />
-        <input asp-for="Password" />
+        <input asp-for="VerificationModel.RememberMe" type="checkbox" />
+        <label asp-for="VerificationModel.RememberMe">Remember Me?</label>
         <br />
 
         <br />
         <button type="submit" id="login">Login</button>
     </form>
 
-</div>-->
+    <div id="end" />
+
+    <footer class="footer" style="margin-top: 23%">
+        <p>&copy; 2018 - FixMyCode</p>
+    </footer>
+</body>

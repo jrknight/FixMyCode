@@ -1,27 +1,38 @@
 ﻿@page
 @model CodeFixModel
 
-<link rel="stylesheet" href="~/css/style.css">
-<script type="text/javascript" src="~/js/site.js"></script>
+<head>
+    <meta name="viewport" content="width=device-width;height=device-height" />
 
-<title>@ViewBag.Title</title>
-@{
-    ViewBag.Title = "CodeFix";
-}
+    <link rel="stylesheet" href="~/css/style.css">
 
-<form method="post">
-    <label asp-for="editCode">Edit Code Below</label>
-    <br />
-    <textarea asp-for="editCode" rows="10" cols="30" class="codebox"></textarea>
-    <span asp-validation-for="editCode"></span>
-    <br />
+    <title>@ViewBag.Title</title>
+    @{
+        ViewBag.Title = "CodeFix";
+    }
+</head>
 
-    <br />
-    <label asp-for="howFixed">How You Fixed It</label>
-    <br />
-    <textarea asp-for="howFixed" rows="10" cols="30" class="codebox"></textarea>
-    <span asp-validation-for="howFixed"></span>
-    <br />
+<body>
+    <form method="post">
+        <label asp-for="editCode">Edit Code Below</label>
+        <br />
+        <textarea asp-for="editCode" rows="10" cols="30" class="codebox"></textarea>
+        <span asp-validation-for="editCode"></span>
+        <br />
 
-    <input type="submit" value="Submit">
-</form>
+        <br />
+        <label asp-for="howFixed">How You Fixed It</label>
+        <br />
+        <textarea asp-for="howFixed" rows="10" cols="30" class="codebox"></textarea>
+        <span asp-validation-for="howFixed"></span>
+        <br />
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="end" />
+
+    <footer class="footer" style="margin-top: 4%">
+        <p>&copy; 2018 - FixMyCode</p>
+    </footer>
+</body>
