@@ -41,14 +41,15 @@ namespace FixMyCode.Pages
 
             if (user != null)
             {
-                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
-                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.UserName));
+                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Email);
+                identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
                 identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
+                HttpContext.User.AddIdentity(identity);
                 var principal = new ClaimsPrincipal(identity);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = VerificationModel.RememberMe });
                 //return RedirectToPage("Index");
 
-                if (HttpContext.User != null)
+                if (HttpContext.User.HasClaim("Email", user.Email))
                 {
                     var roles = await UserManager.GetRolesAsync(user);
 

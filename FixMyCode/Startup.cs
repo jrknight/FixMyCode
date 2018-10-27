@@ -90,6 +90,7 @@ namespace FixMyCode
 
             services.AddScoped<IQueryRepository, QueryRepository>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services
                 .AddSingleton<IActionContextAccessor, ActionContextAccessor>()
