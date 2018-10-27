@@ -19,14 +19,14 @@ form{
     margin-left: 45%;
 }
 
-/*TextBox for code fix*/
+/*TextBox for code */
 .codebox {
     overflow: auto;
     resize: none;
 }
 /**/
 
-/* Index Page */
+/* Page */
 
 /*Main div*/
 .main {
@@ -96,4 +96,4 @@ footer {
 }
 /**/
 
-/* Index Page */
+/* Page */

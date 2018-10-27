@@ -1,15 +1,20 @@
 ﻿@page "/Account/Createaccount"
 @model FixMyCode.Pages.CreateAccountModel
 
-<link rel="stylesheet" href="~/css/style.css" />
-<script src="~/js/site.js"></script>
-<title>@ViewBag.Title</title>
-@{
-    ViewBag.Title = "Create Account";
-}
+<head>
+    <meta name="viewport" content="width=device-width;height=device-height" />
 
+    <link rel="stylesheet" href="~/css/style.css" />
 
-<div>
+    <script src="~/js/site.js"></script>
+
+    <title>@ViewBag.Title</title>
+    @{
+        ViewBag.Title = "Create Account";
+    }
+</head>
+
+<body>
     <form method="post">
         <label asp-for="CredentialModel.Username">Username</label>
         <br />
@@ -46,4 +51,10 @@
         <br />
         <button type="submit" id="submit_create">Submit</button>
     </form>
-</div>
+
+    <div id="end" />
+
+    <footer class="footer" style="margin-top: 15%">
+        <p>&copy; 2018 - FixMyCode</p>
+    </footer>
+</body>
