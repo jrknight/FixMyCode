@@ -38,26 +38,38 @@ namespace FixMyCode.Pages
         public async Task<IActionResult> OnPost()
         {
             var user = await UserManager.FindByEmailAsync(VerificationModel.Email);
+            var result = await SignInManager.PasswordSignInAsync(user, VerificationModel.Password, true, false);
 
-            if (user != null)
+            if (user != null && result.Succeeded)
             {
-                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Email);
-                identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
-                identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
-                HttpContext.User.AddIdentity(identity);
-                var principal = new ClaimsPrincipal(identity);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = VerificationModel.RememberMe });
-                //return RedirectToPage("Index");
+                const string issuer = "https://fixmycode.net";
 
-                if (HttpContext.User.HasClaim("Email", user.Email))
+                var claims = new List<Claim> {
+                    new Claim(ClaimTypes.NameIdentifier, user.UserName, ClaimValueTypes.String, issuer),
+                    new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.String, issuer)
+                };
+
+                var userIdentity = new ClaimsIdentity(claims, "Password");
+
+                var userPrincipal = new ClaimsPrincipal(userIdentity);
+
+                await HttpContext.SignInAsync(userPrincipal, new AuthenticationProperties
                 {
-                    var roles = await UserManager.GetRolesAsync(user);
+                    ExpiresUtc = DateTime.UtcNow.AddDays(30),
+                    IsPersistent = true,
+                    AllowRefresh = false
+                });
+                
+                /*"Cookie", userPrincipal,
+                    new AuthenticationProperties
+                    {
+                        ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+                        IsPersistent = false,
+                        AllowRefresh = false
+                    }*/
 
-                    return
-                        Redirect("/Submissions/StudentSubmission"); //roles.Contains("Student") ? Redirect("/StudentSubmission") : Redirect("/Browse");
-                }
+                return Redirect("/Submissions/StudentSubmission"); //roles.Contains("Student") ? Redirect("/StudentSubmission") : Redirect("/Browse");
 
-                return RedirectToPage("Error");
             }
 
             return Redirect("/");

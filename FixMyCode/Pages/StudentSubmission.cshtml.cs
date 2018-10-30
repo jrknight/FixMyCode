@@ -44,7 +44,7 @@ namespace FixMyCode.Pages
             if (ModelState.IsValid)
             {
 
-                var user = await GetCurrentUserAsync();
+                var user = await UserManager.FindByEmailAsync("jrk.reno@gmail.com");
                 
 
                 Query q = new Query { Date = DateTime.Now, Question = QueryModel.Question, Code = QueryModel.Code, StudentId = user.Id };
@@ -54,10 +54,11 @@ namespace FixMyCode.Pages
                 Redirect("/");
 
             }
-            if (await QueryRepository.Save())
+            if (!await QueryRepository.Save())
             {
-                return Redirect("Error");
+                return RedirectToPage("Error");
             }
+
             return RedirectToPage("Confirmation");
         }
 

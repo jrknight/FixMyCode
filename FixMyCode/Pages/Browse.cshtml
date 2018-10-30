@@ -1,8 +1,14 @@
 ﻿@page
+@using FixMyCode.Entities
+@using FixMyCode.Services
 @model FixMyCode.Pages.BrowseModel
-@{
-    ViewData["Title"] = "Browse";
-}
+
+<head>
+    <title>@ViewBag.Title</title>
+    @{
+        ViewBag.Title = "Browse";
+    }
+</head>
 
 <h2>Browse</h2>
 
@@ -23,20 +29,20 @@
                 <td>Username</td>
                 <td>Code Preview</td>
             </tr>
-            @for (int i = 0; i < BrowseModel.Queries.Count(); i++)
+            @foreach(Query q in BrowseModel.Queries)
              {
                 <tr>
                     <td>
-                        @Html.TextBoxFor(it => BrowseModel.Queries.ElementAt(i).Question)
-                        @Html.HiddenFor(it => BrowseModel.Queries.ElementAt(i).Question)
+                        @Html.TextBoxFor(it => q.Question)
+                        @Html.HiddenFor(it => q.Question)
                     </td>
                     <td>
-                        @BrowseModel.Queries.ElementAt(i).Student.UserName
-                        @Html.HiddenFor(it => BrowseModel.Queries.ElementAt(i).Student.UserName)
+                        @q.Student.UserName
+                        @Html.HiddenFor(it => q.Student.UserName)
                     </td>
                     <td>
-                        @BrowseModel.Queries.ElementAt(i).Student.Email
-                        @Html.HiddenFor(it => BrowseModel.Queries.ElementAt(i).Student.Email)
+                        @q.Student.Email
+                        @Html.HiddenFor(it => q.Student.Email)
                     </td>
                 </tr>
             }

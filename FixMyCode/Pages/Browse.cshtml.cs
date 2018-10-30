@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FixMyCode.Entities;
 using FixMyCode.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -11,18 +12,27 @@ namespace FixMyCode.Pages
 {
     public class BrowseModel : PageModel
     {
-        private IQueryRepository QueryRepository;
 
-        public BrowseModel(IQueryRepository queryRepository)
+        
+        private IQueryRepository QueryRepository;
+        private UserManager<AppUser> UserManager;
+
+        public BrowseModel(IQueryRepository queryRepository, UserManager<AppUser> userManager)
         {
             QueryRepository = queryRepository;
+            UserManager = userManager;
         }
 
-        public static IEnumerable<Query> Queries;
+        
+        public static List<Query> Queries;
 
-        public async void OnGet()
+        public async Task OnGet()
         {
-            Queries = await QueryRepository.GetAllUnsolvedQueries();
+            Queries = (List<Query>) await QueryRepository.GetAllUnsolvedQueries();
+            foreach(Query q in Queries)
+            {
+                q.Student = await UserManager.FindByIdAsync(q.StudentId);
+            }
         }
     }
 }
