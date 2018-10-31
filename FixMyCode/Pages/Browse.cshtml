@@ -14,15 +14,6 @@
 
 <div>
     <form>
-        <div class="form-group">
-            <label for="inputSpeaker" class="col-sm-2 control-label">
-                Speaker
-            </label>
-            <div class="col-sm-6">
-
-            </div>
-        </div>
-
         <table class="table table-bordered table-condensed table-hover">
             <tr class="warning">
                 <td>Question</td>
@@ -31,9 +22,9 @@
             </tr>
             @foreach(Query q in BrowseModel.Queries)
              {
-                <tr>
+                <tr onclick="window.location.href='/item'">
                     <td>
-                        @Html.TextBoxFor(it => q.Question)
+                        @Html.DisplayTextFor(it => q.Question)
                         @Html.HiddenFor(it => q.Question)
                     </td>
                     <td>
