@@ -94,7 +94,7 @@ namespace FixMyCode
 
             services
                 .AddSingleton<IActionContextAccessor, ActionContextAccessor>()
-                .AddScoped<IUrlHelper>(x => x
+                .AddScoped(x => x
                 .GetRequiredService<IUrlHelperFactory>()
                 .GetUrlHelper(x.GetRequiredService<IActionContextAccessor>().ActionContext));
 

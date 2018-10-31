@@ -14,7 +14,7 @@ using Microsoft.CodeAnalysis.CSharp;
 
 namespace FixMyCode.Pages
 {
-    public class CreateAccountModel : PageModel
+    public class CreateUserAccountModel : PageModel
     {
         private IEmailService EmailService;
         private IUrlHelper UrlHelper;
@@ -23,7 +23,7 @@ namespace FixMyCode.Pages
 
 
 
-        public CreateAccountModel(IUserRepository userRepository, IEmailService ES, IUrlHelper urlHelper, UserManager<AppUser> userManager)
+        public CreateUserAccountModel(IUserRepository userRepository, IEmailService ES, IUrlHelper urlHelper, UserManager<AppUser> userManager)
         {
             UserRepository = userRepository;
             EmailService = ES;
@@ -36,9 +36,9 @@ namespace FixMyCode.Pages
         public CredentialModel CredentialModel { get; set; }
 
         //When the page is loaded
-        public void OnGet()
+        public void OnGet(string type)
         {
-
+            
         }
 
         public async Task<IActionResult> OnPost()
