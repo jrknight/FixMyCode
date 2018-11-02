@@ -26,7 +26,14 @@ namespace FixMyCode.Pages
             UserManager = userManager;
         }
 
-        private Task<AppUser> GetCurrentUserAsync() => UserManager.GetUserAsync(HttpContext.User);
+        private void GetCurrentUserAsync()
+        {
+            var userIdentifier = HttpContext.User.Claims.ElementAt(0);
+            if (userIdentifier.Type == "")
+            {
+                
+            }
+        }
 
         [BindProperty]
         public QueryModel QueryModel { get; set; }
@@ -39,13 +46,13 @@ namespace FixMyCode.Pages
 
         public async Task<IActionResult> OnPost()
         {
-            Debug.WriteLine("Controller Activated");
-
             if (ModelState.IsValid)
             {
+                GetCurrentUserAsync();
 
-                var user = await UserManager.FindByEmailAsync("jrk.reno@gmail.com");
+                var user = await UserManager.FindByIdAsync("");
                 
+
 
                 Query q = new Query { Date = DateTime.Now, Question = QueryModel.Question, Code = QueryModel.Code, StudentId = user.Id };
                 QueryRepository.AddQuery(q);

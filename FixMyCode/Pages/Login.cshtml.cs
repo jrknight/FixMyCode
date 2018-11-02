@@ -51,15 +51,16 @@ namespace FixMyCode.Pages
 
                 var userIdentity = new ClaimsIdentity(claims, "Password");
 
-                var userPrincipal = new ClaimsPrincipal(userIdentity);
+                var userPrincipal = new ClaimsPrincipal();
+
+                userPrincipal.AddIdentity(userIdentity);
 
                 await HttpContext.SignInAsync(userPrincipal, new AuthenticationProperties
                 {
                     ExpiresUtc = DateTime.UtcNow.AddDays(30),
-                    IsPersistent = true,
+                    IsPersistent = false,
                     AllowRefresh = false
                 });
-                
                 /*"Cookie", userPrincipal,
                     new AuthenticationProperties
                     {
