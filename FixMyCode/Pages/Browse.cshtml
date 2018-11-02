@@ -14,15 +14,17 @@
 
 <div>
     <form>
-        <table class="table table-bordered table-condensed table-hover">
-            <tr class="warning">
-                <td>Question</td>
-                <td>Username</td>
-                <td>Code Preview</td>
-            </tr>
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <td>Question</td>
+                    <td>Username</td>
+                    <td>Code Preview</td>
+                </tr>
+            </thead>
             @foreach(Query q in BrowseModel.Queries)
-            {
-                <tr onclick="window.location.href='/item'">
+             {
+                <tr onclick="window.location.href='/codefix'">
                     <td>
                         @Html.DisplayTextFor(it => q.Question)
                         @Html.HiddenFor(it => q.Question)
@@ -38,6 +40,5 @@
                 </tr>
             }
         </table>
-
     </form>
 </div>
