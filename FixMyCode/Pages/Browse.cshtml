@@ -17,11 +17,11 @@
         <table class="table table-bordered table-condensed table-hover">
             <tr class="warning">
                 <td>Question</td>
-                <td>Username</td>x
+                <td>Username</td>
                 <td>Code Preview</td>
             </tr>
             @foreach(Query q in BrowseModel.Queries)
-             {
+            {
                 <tr onclick="window.location.href='/item'">
                     <td>
                         @Html.DisplayTextFor(it => q.Question)
