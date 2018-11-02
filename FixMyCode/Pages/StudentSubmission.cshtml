@@ -18,14 +18,30 @@
 
 <body>
     <form method="post">
-        <label asp-for="QueryModel.Question">Question about your code</label>
+
+        <br />
+        <label asp-for="QueryModel.Title">Title for your question:</label>
+        <br />
+        <textarea asp-for="QueryModel.Title" rows="10" cols="30" class="codebox"></textarea>
+        <span asp-validation-for="QueryModel.Title"></span>
+        <br />
+
+        <br />
+        <label asp-for="QueryModel.Description">Thoroughly describe your problem:</label>
+        <br />
+        <textarea asp-for="QueryModel.Description" rows="10" cols="30" class="codebox"></textarea>
+        <span asp-validation-for="QueryModel.Description"></span>
+        <br />
+
+        <br />
+        <label asp-for="QueryModel.Question">Specific question about your code:</label>
         <br />
         <textarea asp-for="QueryModel.Question" rows="10" cols="30" class="codebox"></textarea>
         <span asp-validation-for="QueryModel.Question"></span>
         <br />
 
         <br />
-        <label asp-for="QueryModel.Code">Code</label>
+        <label asp-for="QueryModel.Code">Copy and paste your code here:</label>
         <br />
         <textarea asp-for="QueryModel.Code" rows="10" cols="30" class="codebox"></textarea>
         <span asp-validation-for="QueryModel.Code"></span>

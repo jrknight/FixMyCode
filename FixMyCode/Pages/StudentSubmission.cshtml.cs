@@ -54,7 +54,13 @@ namespace FixMyCode.Pages
                 
 
 
-                Query q = new Query { Date = DateTime.Now, Question = QueryModel.Question, Code = QueryModel.Code, StudentId = user.Id };
+                Query q = new Query { Date = DateTime.Now,
+                    Question = QueryModel.Question, 
+                    Code = QueryModel.Code, 
+                    StudentId = user.Id, 
+                    Title = QueryModel.Title, 
+                    Description = QueryModel.Description
+                };
                 QueryRepository.AddQuery(q);
 
 

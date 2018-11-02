@@ -19,6 +19,10 @@ namespace FixMyCode.Entities
         [Required]
         public string Code { get; set; }
         [Required]
+        public string Description {get; set; }
+        [Required]
+        public string Title {get; set; }
+        [Required]
         public bool IsSolved { get; set; } = false;
         [Required]
         public string StudentId { get; set; }
