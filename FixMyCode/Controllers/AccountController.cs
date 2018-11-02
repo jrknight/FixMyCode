@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using FixMyCode.Entities;
-using FixMyCode.Pages;
-using FixMyCode.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +34,10 @@ namespace FixMyCode.Controllers
             
             return View("Index");
         }
+
+
+
+
 
         /*[HttpPost("CreateAccount")]
         [ValidateAntiForgeryToken]
