@@ -22,8 +22,8 @@
                     <td>Code Preview</td>
                 </tr>
             </thead>
-            @foreach(Query q in BrowseModel.Queries)
-             {
+            @foreach (Query q in BrowseModel.Queries)
+            {
                 <tr onclick="window.location.href='/codefix'">
                     <td>
                         @Html.DisplayTextFor(it => q.Question)
@@ -34,8 +34,8 @@
                         @Html.HiddenFor(it => q.Student.UserName)
                     </td>
                     <td>
-                        @q.Student.Email
-                        @Html.HiddenFor(it => q.Student.Email)
+                        @q.Code
+                        @Html.HiddenFor(it => q.Code)
                     </td>
                 </tr>
             }
