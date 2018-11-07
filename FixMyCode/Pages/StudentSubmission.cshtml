@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width;height=device-height" />
 
     <link rel="stylesheet" href="~/css/style.css" />
-    
+
     <script src="CodeMirror-master/src/codemirror.js"></script>
     <link rel="stylesheet" href="CodeMirror-master/lib/codemirror.css">
     <script src="mode/javascript/javascript.js"></script>
@@ -14,10 +14,18 @@
     @{
         ViewBag.Title = "Student Submissions";
     }
+
+    <style type="text/css" media="screen">
+
+        #editor {
+            position: relative;
+            width: 50%;
+        }
+    </style>
 </head>
 
 <body>
-    <form method="post">
+    <form method="post" style="right: 5%">
 
         <br />
         <label asp-for="QueryModel.Title">Title for your question:</label>
@@ -25,6 +33,23 @@
         <textarea asp-for="QueryModel.Title" rows="10" cols="30" class="codebox"></textarea>
         <span asp-validation-for="QueryModel.Title"></span>
         <br />
+
+        <pre id="editor">autoresizing editor</pre>
+
+        <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            var editor = ace.edit("editor", {
+                theme: "ace/theme/tomorrow_night_blue",
+                mode: "ace/mode/html",
+                autoScrollEditorIntoView: true,
+                maxLines: 30,
+                minLines: 30
+            });
+            editor.setTheme("ace/theme/monokai");
+            editor.session.setMode("ace/mode/javascript");
+            editor.resize(20, 20, 20, 20);
+
+        </script>
 
         <br />
         <label asp-for="QueryModel.Description">Thoroughly describe your problem:</label>
@@ -47,72 +72,52 @@
         <span asp-validation-for="QueryModel.Code"></span>
         <br />
 
+
+
+
         <button type="submit">Submit</button>
     </form>
 </body>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <style type="text/css" media="screen">
+<!--head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <style type="text/css" media="screen">
 
-            .ace_editor {
-                border: 1px solid lightgray;
-                margin: auto;
-                height: 800px;
-                width: 400px;
-                font-size: 26px !important;
-                max-width: 30%;
-            }
+        .ace_editor {
+            border: 1px solid lightgray;
+            margin: auto;
+            height: 800px;
+            width: 400px;
+            font-size: 26px !important;
+            max-width: 30%;
+        }
 
-            .scrollmargin {
-                height: 80px;
-                text-align: center;
-            }
+        .scrollmargin {
+            height: 80px;
+            text-align: center;
+        }
 
-            .wrapper {
-                text-align: center;
-                perspective: 500px;
-                margin-top: 50px;
-            }
-
-
-            .transformed {
-                transform: scale(0.5);
-                transform-origin: center 12%
-            }
-
-            #editor {
-                width: 100%;
-                min-width: 100%;
-            }
+        .wrapper {
+            text-align: center;
+            perspective: 500px;
+            margin-top: 50px;
+        }
 
 
-        </style>
-    </head>
-    <body>
-        <div class="transformed">
-        
-            <pre id="editor">editor</pre>
+        .transformed {
+            transform: scale(0.5);
+            transform-origin: center 12%
+        }
+
+        #editor {
+            width: 100%;
+            min-width: 100%;
+        }
 
 
-        </div>
-        <!-- load ace -->
-        <script src="../aceConfirguration/ace.js"></script>
-        <script>
-
-        var editor = ace.edit("editor");
-        editor.setOptions({
-        hasCssTransforms: true,
-        mode: "ace/mode/html",
-        value: "editor 4\n from a mirror",
-        });
-        editor.renderer.setScrollMargin(10, 10, 10, 10);
-
-        </script>
-        <script src="aceConfiguration/show_own_source.js"></script>
-    </body>
-    
+    </style>
+</!--head>-->
 
 
 

@@ -48,9 +48,9 @@ namespace FixMyCode.Pages
         {
             if (ModelState.IsValid)
             {
-                GetCurrentUserAsync();
+                //GetCurrentUserAsync();
 
-                var user = await UserManager.FindByIdAsync("");
+                var user = await UserManager.FindByEmailAsync("jrk.reno@gmail.com");
                 
 
 
@@ -73,7 +73,6 @@ namespace FixMyCode.Pages
             }
 
             return RedirectToPage("Confirmation");
-        }
-
+        }   
     }
 }
