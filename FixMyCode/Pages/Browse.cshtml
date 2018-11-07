@@ -13,32 +13,30 @@
 <h2>Browse</h2>
 
 <div>
-    <form>
-        <table class="table table-condensed table-hover">
-            <thead>
-                <tr>
-                    <td>Question</td>
-                    <td>Username</td>
-                    <td>Code Preview</td>
-                </tr>
-            </thead>
-            @foreach (Query q in BrowseModel.Queries)
-            {
-                <tr onclick="window.location.href='/codefix'">
-                    <td>
-                        @Html.DisplayTextFor(it => q.Question)
-                        @Html.HiddenFor(it => q.Question)
-                    </td>
-                    <td>
-                        @q.Student.UserName
-                        @Html.HiddenFor(it => q.Student.UserName)
-                    </td>
-                    <td>
-                        @q.Code
-                        @Html.HiddenFor(it => q.Code)
-                    </td>
-                </tr>
-            }
-        </table>
-    </form>
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Date</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        @foreach (Query q in BrowseModel.Queries)
+        {
+            <tr onclick="window.location.href='/codefix'">
+                <td>
+                    @Html.DisplayTextFor(it => q.Question)
+                    @Html.HiddenFor(it => q.Question)
+                </td>
+                <td>
+                    @q.Student.UserName
+                    @Html.HiddenFor(it => q.Student.UserName)
+                </td>
+                <td>
+                    @q.Student.Email
+                    @Html.HiddenFor(it => q.Student.Email)
+                </td>
+            </tr>
+        }
+    </table>
 </div>
