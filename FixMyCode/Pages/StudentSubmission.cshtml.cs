@@ -73,7 +73,6 @@ namespace FixMyCode.Pages
             }
 
             return RedirectToPage("Confirmation");
-        }
-
+        }   
     }
 }
