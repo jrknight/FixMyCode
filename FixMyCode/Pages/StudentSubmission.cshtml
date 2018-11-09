@@ -24,32 +24,36 @@
     </style>
 </head>
 
-<body>
-    <form method="post" style="right: 5%">
+<body style="text-align: center">
+    <form method="post">
 
         <br />
         <label asp-for="QueryModel.Title">Title for your question:</label>
         <br />
-        <textarea asp-for="QueryModel.Title" rows="10" cols="30" class="codebox"></textarea>
+        <input asp-for="QueryModel.Title" />
         <span asp-validation-for="QueryModel.Title"></span>
         <br />
 
-        <pre id="editor">autoresizing editor</pre>
+        <br />
+        <label asp-for="QueryModel.Code">Copy and paste your code here:</label>
+        <div style="margin-left: 33%">
+            <pre id="editor">write code here!</pre>
 
-        <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script>
-            var editor = ace.edit("editor", {
-                theme: "ace/theme/tomorrow_night_blue",
-                mode: "ace/mode/html",
-                autoScrollEditorIntoView: true,
-                maxLines: 30,
-                minLines: 30
-            });
-            editor.setTheme("ace/theme/monokai");
-            editor.session.setMode("ace/mode/javascript");
-            editor.resize(20, 20, 20, 20);
+            <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+            <script>
+                var editor = ace.edit("editor", {
+                    theme: "ace/theme/tomorrow_night_blue",
+                    mode: "ace/mode/html",
+                    autoScrollEditorIntoView: true,
+                    maxLines: 30,
+                    minLines: 30
+                });
+                editor.setTheme("ace/theme/monokai");
+                editor.session.setMode("ace/mode/javascript");
+                editor.resize(20, 20, 20, 20);
 
-        </script>
+            </script>
+        </div>
 
         <br />
         <label asp-for="QueryModel.Description">Thoroughly describe your problem:</label>
@@ -66,17 +70,14 @@
         <br />
 
         <br />
-        <label asp-for="QueryModel.Code">Copy and paste your code here:</label>
-        <br />
-        <textarea asp-for="QueryModel.Code" rows="10" cols="30" class="codebox"></textarea>
-        <span asp-validation-for="QueryModel.Code"></span>
-        <br />
-
-
-
-
         <button type="submit">Submit</button>
+        <br />
+        <br />
     </form>
+
+    <footer>
+        <p>&copy; 2018 - FixMyCode - Alpha 1.2</p>
+    </footer>
 </body>
 
 <!--head>

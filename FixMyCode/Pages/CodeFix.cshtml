@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <form method="post">
+    <form method="post" class="form">
         <label asp-for="editCode">Edit Code Below</label>
         <br />
         <textarea asp-for="editCode" rows="10" cols="30" class="codebox"></textarea>
@@ -27,6 +27,11 @@
         <span asp-validation-for="howFixed"></span>
         <br />
 
+        <br />
         <button type="submit">Submit</button>
     </form>
+
+    <footer class="footer">
+        <p>&copy; 2018 - FixMyCode - Alpha 1.2</p>
+    </footer>
 </body>
