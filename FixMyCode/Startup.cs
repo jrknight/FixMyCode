@@ -57,7 +57,7 @@ namespace FixMyCode
             var connectionString = Configuration.GetConnectionString("azureDb");
             var testConnectionString = Configuration.GetConnectionString("localDb");
             
-            services.AddDbContext<FixMyCodeDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<FixMyCodeDbContext>(options => options.UseSqlServer(testConnectionString));
 
             services.AddIdentity<AppUser, IdentityRole>(o => {
                 o.Password.RequireDigit = true;
