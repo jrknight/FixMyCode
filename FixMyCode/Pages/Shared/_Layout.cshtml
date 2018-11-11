@@ -41,15 +41,16 @@
 
                     <ul class="nav navbar-nav">
                         @if (User.Identity.IsAuthenticated)
-                        {
-
-                        }
-                        else
-                        {
+                         {
+                             <li style="position: absolute; width: 50px; margin-left: 10px; left: 93%;"><a href="/Account/">
+                                 @User.Identity.Name
+                             </a></li>
+                         }
+                         else
+                         {
                             <li style="position: absolute; width: 50px; left: 89%;"><a id="createAccount" href="/Account/CreateAccount">Create</a></li>
                             <li style="position: absolute; width: 50px; margin-left: 10px; left: 93%;"><a href="/Account/Login">Login</a></li>
-                        }
-                        
+                         }
                     </ul>
                 </ul>
             </div>
