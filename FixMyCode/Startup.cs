@@ -7,7 +7,7 @@ using FixMyCode.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http; 
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -57,7 +57,7 @@ namespace FixMyCode
             var connectionString = Configuration.GetConnectionString("azureDb");
             var testConnectionString = Configuration.GetConnectionString("localDb");
             
-            services.AddDbContext<FixMyCodeDbContext>(options => options.UseSqlServer(testConnectionString));
+            services.AddDbContext<FixMyCodeDbContext>(options => options.UseSqlServer(connectionString));
 
             services.AddIdentity<AppUser, IdentityRole>(o => {
                 o.Password.RequireDigit = true;
