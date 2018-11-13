@@ -2,36 +2,28 @@
 @model CodeFixModel
 
 <head>
-    <meta name="viewport" content="width=device-width;height=device-height" />
-
-    <link rel="stylesheet" href="~/css/style.css">
-
     <title>@ViewBag.Title</title>
     @{
         ViewBag.Title = "CodeFix";
     }
 </head>
 
-<body>
+<div class="container-fluid col-lg-4 offset-lg-4">
+    <h2>Fix Code</h2>
     <form method="post" class="form">
-        <label asp-for="editCode">Edit Code Below</label>
-        <br />
-        <textarea asp-for="editCode" rows="10" cols="30" class="codebox"></textarea>
-        <span asp-validation-for="editCode"></span>
-        <br />
 
-        <br />
-        <label asp-for="howFixed">How You Fixed It</label>
-        <br />
-        <textarea asp-for="howFixed" rows="10" cols="30" class="codebox"></textarea>
-        <span asp-validation-for="howFixed"></span>
-        <br />
+        <div class="form-group">
+            <label asp-for="editCode">Edit Code Below:</label>
+            <textarea asp-for="editCode" class="form-control" rows="8"></textarea>
+            <span asp-validation-for="editCode"></span>
+        </div>
 
-        <br />
-        <button type="submit">Submit</button>
+        <div class="form-group">
+            <label asp-for="howFixed">How You Fixed It:</label>
+            <textarea asp-for="howFixed" class="form-control" rows="8"></textarea>
+            <span asp-validation-for="howFixed"></span>
+        </div>
+
+        <button type="submit" id="submit_create" class="btn btn-primary">Create</button>
     </form>
-
-    <footer class="footer">
-        <p>&copy; 2018 - FixMyCode - Alpha 1.2</p>
-    </footer>
-</body>
+</div>
