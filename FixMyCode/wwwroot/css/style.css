@@ -12,16 +12,6 @@ html,body {
     margin-bottom: 10px;
 }
 
-/*applied to all forms*/
-form{
-    position: relative;
-    margin-top: 6%;
-}
-
-.form {
-    margin-left: 45%;
-}
-
 /*TextBox for code */
 .codebox {
     overflow: auto;

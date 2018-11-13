@@ -4,39 +4,33 @@
 <head>
     <meta name="viewport" content="width=device-width;height=device-height" />
 
-    <link rel="stylesheet" href="~/css/style.css">
-
     <title>@ViewBag.Title</title>
     @{
         ViewBag.Title = "Login";
     }
 </head>
 
-<body>
+<div class="container-fluid col-lg-4 offset-lg-4">
+    <h2>Login</h2>
     <form method="post" class="form">
-        <label asp-for="VerificationModel.Email">Email</label>
-        <br />
-        <input asp-for="VerificationModel.Email" />
-        <span asp-validation-for="VerificationModel.Email" class="text-danger"></span>
-        <br />
+        <div class="form-group">
+            <label asp-for="VerificationModel.Email">Email:</label>
+            <input asp-for="VerificationModel.Email" type="email" class="form-control" placeholder="Enter Email" />
+            <span asp-validation-for="VerificationModel.Email" class="text-danger"></span>
+        </div>
 
-        <br />
-        <label asp-for="VerificationModel.Password">Password</label>
-        <br />
-        <input asp-for="VerificationModel.Password" type="password" />
-        <span asp-validation-for="VerificationModel.Password" class="text-danger"></span>
-        <br />
+        <div class="form-group">
+            <label asp-for="VerificationModel.Email">Password:</label>
+            <input asp-for="VerificationModel.Password" type="password" class="form-control" placeholder="Enter Password" />
+            <span asp-validation-for="VerificationModel.Password" class="text-danger"></span>
+        </div>
 
-        <br />
-        <input asp-for="VerificationModel.RememberMe" type="checkbox" />
-        <label asp-for="VerificationModel.RememberMe">Remember Me?</label>
-        <br />
-
-        <br />
-        <button type="submit" id="login">Login</button>
+        <div class="form-group form-check">
+            <label asp-for="VerificationModel.RememberMe" class="form-check-label">
+                <input asp-for="VerificationModel.RememberMe" type="checkbox" class="form-check-input"/>Remember Me?
+            </label>
+        </div>
+        
+        <button type="submit" id="login" class="btn btn-primary">Login</button>
     </form>
-
-    <footer class="footer">
-        <p>&copy; 2018 - FixMyCode - Alpha 1.2</p>
-    </footer>
-</body>
+</div>
