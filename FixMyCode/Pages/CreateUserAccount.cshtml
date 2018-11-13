@@ -4,8 +4,6 @@
 <head>
     <meta name="viewport" content="width=device-width;height=device-height" />
 
-    <link rel="stylesheet" href="~/css/style.css" />
-
     <script src="~/js/site.js"></script>
 
     <title>@ViewBag.Title</title>
@@ -14,49 +12,37 @@
     }
 </head>
 
-<body>
+<div class="container-fluid col-lg-4 offset-lg-4">
+    <h2>Create Account</h2>
     <form method="post" class="form">
-        <label asp-for="CredentialModel.Username">Username</label>
-        <br />
-        <input asp-for="CredentialModel.Username" id="usernameText" onfocusout="return a()" />
-        <span asp-validation-for="CredentialModel.Username" class="text-danger"></span>
-        <br />
-        <label id="usernameLength" style="visibility: collapse">Username must be at least 5 characters long.</label>
-        <br />
 
-        <label asp-for="CredentialModel.Email">Email</label>
-        <br />
-        <input asp-for="CredentialModel.Email" id="emailText" onfocusout="return b()" />
-        <span asp-validation-for="CredentialModel.Email" class="text-danger"></span>
-        <br />
-        <label id="emailReal" style="visibility: collapse">Email must be real.</label>
-        <br />
+        <div class="form-group">
+            <label asp-for="CredentialModel.Username">Username:</label>
+            <input asp-for="CredentialModel.Username" class="form-control" placeholder="Enter Username" />
+            <span asp-validation-for="CredentialModel.Username" class="text-danger"></span>
+        </div>
 
-        <label asp-for="CredentialModel.Password">Password</label>
-        <br />
-        <input asp-for="CredentialModel.Password" type="password" id="passwordText" onfocusout="return c()" />
-        <span asp-validation-for="CredentialModel.Password" class="text-danger"></span>
-        <br />
-        <label id="passwordCheck" style="visibility: collapse">Password must be at least 8 characters long and include a number.</label>
-        <br />
+        <div class="form-group">
+            <label asp-for="CredentialModel.Email">Email:</label>
+            <input asp-for="CredentialModel.Email" type="email" class="form-control" placeholder="Enter Email" />
+            <span asp-validation-for="CredentialModel.Email" class="text-danger"></span>
+        </div>
 
-        <label asp-for="CredentialModel.ConfirmPassword">Confirm Password</label>
-        <br />
-        <input asp-for="CredentialModel.ConfirmPassword" type="password" onfocusout="return d()" />
-        <span asp-validation-for="CredentialModel.ConfirmPassword" class="text-danger"></span>
-        <br />
-        <label id="confirmCheck" style="visibility: collapse">Passwords must be the same.</label>
-        <br />
+        <div class="form-group">
+            <label asp-for="CredentialModel.Password">Password:</label>
+            <input asp-for="CredentialModel.Password" type="password" class="form-control" placeholder="Enter Password" />
+            <span asp-validation-for="CredentialModel.Password" class="text-danger"></span>
+        </div>
 
-        <button type="submit" id="submit_create">Create</button>
+        <div class="form-group">
+            <label asp-for="CredentialModel.ConfirmPassword">Confirm Password:</label>
+            <input asp-for="CredentialModel.ConfirmPassword" class="form-control" placeholder="Re-enter Password" />
+            <span asp-validation-for="CredentialModel.ConfirmPassword" class="text-danger"></span>
+        </div>
 
-        <br />
-
-        <br />
-        <a asp-page="CreateEditorAccount">Want to Fix Code?</a>
+        <button type="submit" id="submit_create" class="btn btn-primary">Create</button>
+        <div class="col-lg-4 offset-4">
+            <a href="CreateEditorAccount" class="btn btn-link">Want to Fix Code?</a>
+        </div>
     </form>
-
-    <footer class="footer">
-        <p>&copy; 2018 - FixMyCode - Alpha 1.2</p>
-    </footer>
-</body>
+</div>
