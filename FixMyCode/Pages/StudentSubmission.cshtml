@@ -2,10 +2,6 @@
 @model StudentSubmissionModel
 
 <head>
-    <meta name="viewport" content="width=device-width;height=device-height" />
-
-    <link rel="stylesheet" href="~/css/style.css" />
-
     <script src="CodeMirror-master/src/codemirror.js"></script>
     <link rel="stylesheet" href="CodeMirror-master/lib/codemirror.css">
     <script src="mode/javascript/javascript.js"></script>
@@ -24,20 +20,18 @@
     </style>
 </head>
 
-<body style="text-align: center">
-    <form method="post">
+<div class="container-fluid col-lg-4 offset-lg-4">
+    <h2>Submit Code</h2>
+    <form method="post" class="form">
+        <div class="form-group">
+            <label asp-for="QueryModel.Title">Title for your question:</label>
+            <input asp-for="QueryModel.Title" class="form-control" placeholder="Enter Title" />
+            <span asp-validation-for="QueryModel.Title"></span>
+        </div>
 
-        <br />
-        <label asp-for="QueryModel.Title">Title for your question:</label>
-        <br />
-        <input asp-for="QueryModel.Title" />
-        <span asp-validation-for="QueryModel.Title"></span>
-        <br />
-
-        <br />
         <label asp-for="QueryModel.Code">Copy and paste your code here:</label>
-        <div style="margin-left: 33%">
-            <input id="editor"/>
+        <div>
+            <input id="editor" />
 
             <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
             <script>
@@ -55,70 +49,18 @@
             </script>
         </div>
 
-        <br />
-        <label asp-for="QueryModel.Description">Thoroughly describe your problem:</label>
-        <br />
-        <textarea asp-for="QueryModel.Description" rows="10" cols="30" class="codebox"></textarea>
-        <span asp-validation-for="QueryModel.Description"></span>
-        <br />
+        <div class="form-group">
+            <label asp-for="QueryModel.Description">Thoroughly describe your problem:</label>
+            <textarea asp-for="QueryModel.Description" class="form-control" rows="8"></textarea>
+            <span asp-validation-for="QueryModel.Description"></span>
+        </div>
 
-        <br />
-        <label asp-for="QueryModel.Question">Specific question about your code:</label>
-        <br />
-        <textarea asp-for="QueryModel.Question" rows="10" cols="30" class="codebox"></textarea>
-        <span asp-validation-for="QueryModel.Question"></span>
-        <br />
+        <div class="form-group">
+            <label asp-for="QueryModel.Question">Specific question about your code:</label>
+            <textarea asp-for="QueryModel.Question" class="form-control" rows="8"></textarea>
+            <span asp-validation-for="QueryModel.Question"></span>
+        </div>
 
-        <br />
-        <button type="submit">Submit</button>
-        <br />
-        <br />
-        
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
-<footer>
-
-    <p>&copy; 2018 - FixMyCode - Alpha 1.2</p>
-
-</footer>
-</body>
-
-<!--head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <style type="text/css" media="screen">
-
-        .ace_editor {
-            border: 1px solid lightgray;
-            margin: auto;
-            height: 800px;
-            width: 400px;
-            font-size: 26px !important;
-            max-width: 30%;
-        }
-
-        .scrollmargin {
-            height: 80px;
-            text-align: center;
-        }
-
-        .wrapper {
-            text-align: center;
-            perspective: 500px;
-            margin-top: 50px;
-        }
-
-
-        .transformed {
-            transform: scale(0.5);
-            transform-origin: center 12%
-        }
-
-        #editor {
-            width: 100%;
-            min-width: 100%;
-        }
-
-
-    </style>
-</!--head>-->
+</div>
