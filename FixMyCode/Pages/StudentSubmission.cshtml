@@ -20,7 +20,7 @@
     </style>
 </head>
 
-<div class="container-fluid col-lg-4 offset-lg-4">
+<div class="container-fluid col-lg-4 offset-lg-4" style="margin-top:30px">
     <h2>Submit Code</h2>
     <form method="post" class="form">
         <div class="form-group">
@@ -31,7 +31,7 @@
 
         <label asp-for="QueryModel.Code">Copy and paste your code here:</label>
         <div>
-            <input id="editor" />
+            <input asp-for="QueryModel.Question" id="editor" />
 
             <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
             <script>

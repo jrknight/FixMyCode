@@ -2,49 +2,61 @@
 @model IndexModel
 
 <head>
-    <meta name="viewport" content="width=device-width;height=device-height" />
-
-    <link rel="stylesheet" href="~/css/style.css" />
-
     <title>@ViewBag.Title</title>
     @{
         ViewBag.Title = "Home";
     }
 </head>
 
-<body>
-    <section id="showcase">
-        <div class="container">
+<div class="container-fluid col-lg-8 offset-lg-2">
+    <div style="margin-top: 25%">
+        <div class="col-lg-4 offset-lg-4" style="text-align: center;">
             <h1>Fix My Code</h1>
+        </div>
+
+        <div>
             <p>Help out by contributing to the alpha version! Ask a question, or helps someone out by solving problems!</p>
         </div>
-    </section>
+    </div>
 
-    <section class="main">
-        <h1 class="indexheader">Student</h1>
-        <p>
-            Having trouble with programming? Need some help with your code?
-            Here you can submit your code to one of our editors and have it fixed with an explanation of the errors.
-        </p>
-        <br />
+    <div style="margin-top: 40%">
+        <div class="col-lg-4 offset-lg-4" style="text-align: center;">
+            <h1>Student</h1>
+        </div>
 
-        <h1 class="indexheader">Editor</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-        </p>
-        <br />
+        <div>
+            <p>
+                Having trouble with programming? Need some help with your code?
+                Here you can submit your code to one of our editors and have it fixed with an explanation of the errors.
+            </p>
+        </div>
+    </div>
 
-        <h1 class="indexheader">Teacher</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-        </p>
-    </section>
+    <div style="margin-top: 10%">
+        <div class="col-lg-4 offset-lg-4" style="text-align: center;">
+            <h1>Editor</h1>
+        </div>
 
-    <footer>
-        <p>&copy; 2018 - FixMyCode - Alpha 1.2</p>
-    </footer>
-</body>
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 10%">
+        <div class="col-lg-4 offset-lg-4" style="text-align: center;">
+            <h1>Teacher</h1>
+        </div>
+
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </p>
+        </div>
+    </div>
+</div>
