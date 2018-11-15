@@ -70,7 +70,7 @@ namespace FixMyCode
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.AccessDeniedPath = "/Account/AccessDenied";
                 options.Cookie.Name = "FixMyCodeCookie";
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromDays(30);
@@ -100,11 +100,11 @@ namespace FixMyCode
 
 
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1); /*.AddRazorPagesOptions(options =>
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizePage("/StudentSubmission");
                     options.Conventions.AuthorizePage("/CodeFix");
-                });*/
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -119,6 +119,7 @@ namespace FixMyCode
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+            
 
             app.UseAuthentication();
             app.UseHttpsRedirection();
