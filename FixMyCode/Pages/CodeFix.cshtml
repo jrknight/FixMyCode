@@ -6,15 +6,41 @@
     @{
         ViewBag.Title = "CodeFix";
     }
+
+    <script src="CodeMirror-master/src/codemirror.js"></script>
+    <link rel="stylesheet" href="CodeMirror-master/lib/codemirror.css">
+    <script src="mode/javascript/javascript.js"></script>
+
+    <style type="text/css" media="screen">
+
+        #editor {
+            position: relative;
+            width: 50%;
+        }
+    </style>
 </head>
 
-<div class="container-fluid col-lg-4 offset-lg-4">
+<div class="container-fluid col-lg-4 offset-lg-4" style="margin-top:30px">
     <h2>Fix Code</h2>
     <form method="post" class="form">
-        <div class="form-group">
-            <label asp-for="editCode">Edit Code Below:</label>
-            <textarea asp-for="editCode" class="form-control" rows="8"></textarea>
-            <span asp-validation-for="editCode"></span>
+        <label asp-for="editCode">Edit Code Below:</label>
+        <div>
+            <input id="editor" />
+
+            <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+            <script>
+                var editor = ace.edit("editor", {
+                    theme: "ace/theme/tomorrow_night_blue",
+                    mode: "ace/mode/html",
+                    autoScrollEditorIntoView: true,
+                    maxLines: 30,
+                    minLines: 30
+                });
+                editor.setTheme("ace/theme/monokai");
+                editor.session.setMode("ace/mode/javascript");
+                editor.resize(20, 20, 20, 20);
+
+            </script>
         </div>
 
         <div class="form-group">
