@@ -23,7 +23,7 @@
         </thead>
         @foreach (Query q in BrowseModel.Queries)
         {
-            <tr onclick="window.location.href='/codefix'">
+            <tr onclick="window.location.href='/Editors/CodeFix'">
                 <td>
                     @Html.DisplayTextFor(it => q.Question)
                     @Html.HiddenFor(it => q.Question)
