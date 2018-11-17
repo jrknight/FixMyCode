@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using FixMyCode.Entities;
+using FixMyCode.Models;
 using FixMyCode.Pages;
 using FixMyCode.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -14,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FixMyCode.Controllers
 {
     [Authorize]
-    [Route("Submissions")]
+    [Route("Queries")]
     public class SubmissionsController : Controller
     {
         private IQueryRepository QueryRepository;
@@ -33,26 +34,45 @@ namespace FixMyCode.Controllers
             return View();
         }
 
-        /*[HttpPost("StudentSubmission")]
-        public async Task<IActionResult> StudentSubmission(StudentSubmissionModel model)
+        [HttpPost("Submit")]
+        [Authorize(Roles = "Student, Admin")]
+        public async Task<IActionResult> StudentSubmission(QueryModel model)
         {
-            Debug.WriteLine("Controller Activated");
-
-           if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                //TODO: Get Student information in this shit
-                var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                //GetCurrentUserAsync();
 
-                Query q = new Query { Date = DateTime.Now, Question = model.Question, Code = model.Code, StudentId = userId };
+                var user = await UserManager.FindByNameAsync(User.Identity.Name);
+                
+
+
+                Query q = new Query { 
+                    Date = DateTime.Now,
+                    Question = model.Question, 
+                    Code = model.Code, 
+                    StudentId = user.Id, 
+                    Title = model.Title, 
+                    Description = model.Description
+                };
+
                 QueryRepository.AddQuery(q);
-                
-                
+
+
+                RedirectToPage("Index");
+
             }
-            if (await QueryRepository.Save())
+            else
             {
-                return View("Error");
+                // update ui to show error in input
+                RedirectToPage("Error");
             }
-            return View("Confirmation");
-        }*/
+
+            if (!await QueryRepository.Save())
+            {
+                return RedirectToPage("Error");
+            }
+
+            return RedirectToPage("Confirmation");
+        }
     }
 }
