@@ -1,5 +1,5 @@
 ﻿@page "/Submissions/StudentSubmission"
-@model StudentSubmissionModel
+@model Models.QueryModel
 
 <head>
     <script src="CodeMirror-master/src/codemirror.js"></script>
@@ -22,42 +22,45 @@
 
 <div class="container-fluid col-lg-4 offset-lg-4" style="margin-top:30px">
     <h2>Submit Code</h2>
-    <form method="post" class="form">
+    <form asp-controller="Submissions" asp-action="StudentSubmission" class="form">
         <div class="form-group">
-            <label asp-for="QueryModel.Title">Title for your question:</label>
-            <input asp-for="QueryModel.Title" class="form-control" placeholder="Enter Title" />
-            <span asp-validation-for="QueryModel.Title"></span>
+            <label asp-for="Title">Title for your question:</label>
+            <input asp-for="Title" class="form-control" placeholder="Enter Title" />
+            <span asp-validation-for="Title"></span>
         </div>
 
-        <label asp-for="QueryModel.Code">Copy and paste your code here:</label>
+        <label asp-for="Code">Copy and paste your code here:</label>
         <div>
-            <input asp-for="QueryModel.Code" id="editor" />
+            <input asp-for="QueryModel.Question" id="editor" />
 
             <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
             <script>
-                var editor = ace.edit("editor", {
-                    theme: "ace/theme/tomorrow_night_blue",
-                    mode: "ace/mode/html",
-                    autoScrollEditorIntoView: true,
-                    maxLines: 30,
-                    minLines: 30
-                });
+                var editor = ace.edit("editor",
+                    {
+                        theme: "ace/theme/tomorrow_night_blue",
+                        mode: "ace/mode/html",
+                        autoScrollEditorIntoView: true,
+                        maxLines: 30,
+                        minLines: 30
+                    });
+                editor.placeholder = "Copy and paste your code here";
                 editor.setTheme("ace/theme/monokai");
                 editor.session.setMode("ace/mode/javascript");
                 editor.resize(20, 20, 20, 20);
+
             </script>
         </div>
 
         <div class="form-group">
-            <label asp-for="QueryModel.Description">Thoroughly describe your problem:</label>
-            <textarea asp-for="QueryModel.Description" class="form-control" rows="8"></textarea>
-            <span asp-validation-for="QueryModel.Description"></span>
+            <label asp-for="Description">Thoroughly describe your problem:</label>
+            <textarea asp-for="Description" id="description" class="form-control" rows="8"></textarea>
+            <span asp-validation-for="Description"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="QueryModel.Question">Specific question about your code:</label>
-            <textarea asp-for="QueryModel.Question" class="form-control" rows="8"></textarea>
-            <span asp-validation-for="QueryModel.Question"></span>
+            <label asp-for="Question">Specific question about your code:</label>
+            <textarea asp-for="Question" class="form-control" rows="8"></textarea>
+            <span asp-validation-for="Question"></span>
         </div>
 
         <script>
@@ -81,4 +84,12 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <script>
+        function submitListener() {
+            var description = Document.getElementById("description");
+
+            console.log(description.text, editor.text);
+
+        }
+    </script>
 </div>

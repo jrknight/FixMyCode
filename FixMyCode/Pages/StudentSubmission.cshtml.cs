@@ -42,38 +42,7 @@ namespace FixMyCode.Pages
         {
             
         }
+       
 
-        public async Task<IActionResult> OnPost()
-        {
-            if (ModelState.IsValid)
-            {
-                //GetCurrentUserAsync();
-
-                var user = await UserManager.FindByEmailAsync("jrk.reno@gmail.com");
-                
-
-
-                Query q = new Query { 
-                    Date = DateTime.Now,
-                    Question = QueryModel.Question, 
-                    Code = QueryModel.Code, 
-                    StudentId = user.Id, 
-                    Title = QueryModel.Title, 
-                    Description = QueryModel.Description
-                };
-
-                QueryRepository.AddQuery(q);
-
-
-                Redirect("/");
-
-            }
-            if (!await QueryRepository.Save())
-            {
-                return RedirectToPage("Error");
-            }
-
-            return RedirectToPage("Confirmation");
-        }   
     }
 }

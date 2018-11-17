@@ -17,6 +17,8 @@
     <Compile Remove="Migrations\20181022041108_init2.Designer.cs" />
     <Compile Remove="Migrations\20181024034211_init3.cs" />
     <Compile Remove="Migrations\20181024034211_init3.Designer.cs" />
+    <Compile Remove="Migrations\20181117234851_reviewfix.cs" />
+    <Compile Remove="Migrations\20181117234851_reviewfix.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
