@@ -2,10 +2,6 @@
 @model Models.QueryModel
 
 <head>
-    <script src="CodeMirror-master/src/codemirror.js"></script>
-    <link rel="stylesheet" href="CodeMirror-master/lib/codemirror.css">
-    <script src="mode/javascript/javascript.js"></script>
-
     <title>@ViewBag.Title</title>
     @{
         ViewBag.Title = "Student Submissions";
@@ -22,7 +18,7 @@
 
 <div class="container-fluid col-lg-4 offset-lg-4" style="margin-top:30px">
     <h2>Submit Code</h2>
-    <form asp-controller="Submissions" asp-action="StudentSubmission" class="form">
+    <form asp-controller="Submissions" asp-action="StudentSubmission" class="form" id="codeForm">
         <div class="form-group">
             <label asp-for="Title">Title for your question:</label>
             <input asp-for="Title" class="form-control" placeholder="Enter Title" />
@@ -31,24 +27,7 @@
 
         <label asp-for="Code">Copy and paste your code here:</label>
         <div>
-            <input asp-for="QueryModel.Question" id="editor" />
-
-            <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-            <script>
-                var editor = ace.edit("editor",
-                    {
-                        theme: "ace/theme/tomorrow_night_blue",
-                        mode: "ace/mode/html",
-                        autoScrollEditorIntoView: true,
-                        maxLines: 30,
-                        minLines: 30
-                    });
-                editor.placeholder = "Copy and paste your code here";
-                editor.setTheme("ace/theme/monokai");
-                editor.session.setMode("ace/mode/javascript");
-                editor.resize(20, 20, 20, 20);
-
-            </script>
+            <div id="editor"></div>
         </div>
 
         <div class="form-group">
@@ -64,13 +43,13 @@
         </div>
 
         <script>
-            $(document).ready(function () {
+            /*$(document).ready(function () {
                 $("#btnSave").on("click", function () {
                     $.ajax({
-                        url: '@Url.Action("YourAction", "YourController")',
+                        url: '@@Url.Action("YourAction", "YourController")',
                         type: 'POST',
                         data: {
-                            id:@Model.QueryModel.Code,
+                            id:@@Model.Code,
                             html: ace.edit("editor").getValue()
                         },
                         cache: false,
@@ -79,17 +58,36 @@
                         }
                     });
                 });
-            });
+            });*/
         </script>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <script>
-        function submitListener() {
-            var description = Document.getElementById("description");
-
-            console.log(description.text, editor.text);
-
-        }
-    </script>
+   
 </div>
+@section Scripts
+{
+    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor",
+            {
+                theme: "ace/theme/tomorrow_night_blue",
+                mode: "ace/mode/html",
+                autoScrollEditorIntoView: true,
+                maxLines: 30,
+                minLines: 30
+            });
+        editor.placeholder = "Copy and paste your code here";
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/javascript");
+        editor.resize(20, 20, 20, 20);
+        $(document).ready(function() {
+            $("#codeForm").submit(
+                function(event) {
+                    event.preventDefault();
+                    var codeValue = editor.getValue();
+                    console.log(codeValue);
+                });
+        });
+    </script>
+}
