@@ -31,10 +31,7 @@
 
         <label asp-for="Code">Copy and paste your code here:</label>
         <div>
-            
-            <label asp-for="Code"></label>
-            <input id="editor" asp-for="Code"/>
-            <span asp-validation-for="Code"></span>
+            <input asp-for="QueryModel.Question" id="editor" />
 
             <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
             <script>
@@ -51,9 +48,6 @@
                 editor.session.setMode("ace/mode/javascript");
                 editor.resize(20, 20, 20, 20);
 
-
-                editor.session.getText();
-
             </script>
         </div>
 
@@ -68,6 +62,25 @@
             <textarea asp-for="Question" class="form-control" rows="8"></textarea>
             <span asp-validation-for="Question"></span>
         </div>
+
+        <script>
+            $(document).ready(function () {
+                $("#btnSave").on("click", function () {
+                    $.ajax({
+                        url: '@Url.Action("YourAction", "YourController")',
+                        type: 'POST',
+                        data: {
+                            id:@Model.QueryModel.Code,
+                            html: ace.edit("editor").getValue()
+                        },
+                        cache: false,
+                        success: function (response) {
+                            alert("Changes Saved.");
+                        }
+                    });
+                });
+            });
+        </script>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
