@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FixMyCode.Entities
 {
-    public class Response
+    public class Review
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,12 +17,18 @@ namespace FixMyCode.Entities
         public string FixedCode { get; set; }
 
         [Required]
+        public string WhatWhy { get; set; }
+
+        [Required]
         public int QueryId { get; set; }
+
+        public Query Query { get; set; }
         
         [Required]
-        public string ReviewerId { get; set; }
+        public int ReviewerId { get; set; }
         
         [Required]
+
         public AppUser Reviewer { get; set; }
 
     }

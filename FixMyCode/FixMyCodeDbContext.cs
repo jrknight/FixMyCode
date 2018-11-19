@@ -19,12 +19,18 @@ namespace FixMyCode
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Review>()
+                .HasOne(r => r.Query)
+                .WithOne(q => q.Review)
+                .HasForeignKey<Query>(q => q.ReviewId);
+
         }
 
 
         public DbContextOptions Options { get; }
         public DbSet<Query> Queries { get; set; }
-        public DbSet<Response> Responses { get; set; }
+        public DbSet<Review> Responses { get; set; }
 
     }
 }

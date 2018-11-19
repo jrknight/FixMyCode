@@ -25,10 +25,10 @@ namespace FixMyCode.Pages
 
         public CreateUserAccountModel(IUserRepository userRepository, IEmailService ES, IUrlHelper urlHelper, UserManager<AppUser> userManager)
         {
-            UserRepository = userRepository;
-            EmailService = ES;
-            UrlHelper = urlHelper;
-            UserManager = userManager;
+           UserRepository = userRepository;
+           EmailService = ES;
+           UrlHelper = urlHelper;
+           UserManager = userManager;
         }
 
 

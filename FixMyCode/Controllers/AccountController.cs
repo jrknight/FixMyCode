@@ -1,19 +1,26 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using FixMyCode.Entities;
+using FixMyCode.Models;
+using FixMyCode.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace FixMyCode.Controllers
 {
     [Route("Account")]
     public class AccountController : Controller
     {
-        
+        private IEmailService EmailService;
+        private IUrlHelper UrlHelper;
         private readonly UserManager<AppUser> UserManager;
 
-        public AccountController(UserManager<AppUser> userManager)
+        public AccountController(UserManager<AppUser> userManager, IEmailService emailService, IUrlHelper urlHelper)
         {
             UserManager = userManager;
+            EmailService = emailService;
+            UrlHelper = urlHelper;
         }
         
         [HttpGet]
@@ -39,9 +46,9 @@ namespace FixMyCode.Controllers
 
 
 
-        /*[HttpPost("CreateAccount")]
+        [HttpPost("CreateAccount")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAccount(CreateAccountModel model)
+        public async Task<IActionResult> CreateAccount(CredentialModel credentialModel)
         {
             Debug.WriteLine("Controller Activated");
 
@@ -52,18 +59,18 @@ namespace FixMyCode.Controllers
                 
             }
 
-            var user = await UserManager.FindByEmailAsync(model.CredentialModel.Email);
+            var user = await UserManager.FindByEmailAsync(credentialModel.Email);
 
             if (user == null)
             {
                 var newUser = new AppUser()
                 {
-                    UserName = model.CredentialModel.Username,
-                    Email = model.CredentialModel.Email,
+                    UserName = credentialModel.Username,
+                    Email = credentialModel.Email,
                     EmailConfirmed = false
                 };
 
-                var result = await UserManager.CreateAsync(newUser, model.CredentialModel.Password);
+                var result = await UserManager.CreateAsync(newUser, credentialModel.Password);
 
                 if (result.Succeeded)
                 {
@@ -74,19 +81,19 @@ namespace FixMyCode.Controllers
                     var callbackUrl = UrlHelper.Action("VerifyAccount", "account", new { UserId = created.Id, code = code }, UrlHelper.ActionContext.HttpContext.Request.Scheme);
                     //var callbackUrl = $"http://{}/MyMvc/MyAction?param1=1&param2=somestring";
 
-                    EmailService.VerifyEmail(created, callbackUrl);
+                    EmailService.VerifyEmail(created, callbackUrl, "student");
 
                     return View("Confirmation");
                 }
                 else
                 {
                     await UserManager.DeleteAsync(newUser);
-                    return View(model);
+                    return RedirectToPage("Error");
                 }
             }
 
-            return View(model);
-        }*/
+            return RedirectToPage("Error");
+        }
 
         /*[HttpPost("Login")]
         [ValidateAntiForgeryToken]

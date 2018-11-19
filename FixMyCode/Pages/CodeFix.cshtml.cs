@@ -17,15 +17,6 @@ namespace FixMyCode.Pages
         public void OnGet()
         {
 
-            string x = editCode;
-            string y = howFixed;
-
-            CredentialModel a = new CredentialModel { Username = x, Email = "jrk.reno@gmail.com", Password = y };
-
-            Debug.WriteLine($"{a.Username} {a.Email} {a.Password}");
-
-
-
         }
     }
 }

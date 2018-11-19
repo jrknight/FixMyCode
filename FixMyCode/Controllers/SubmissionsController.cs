@@ -74,5 +74,22 @@ namespace FixMyCode.Controllers
 
             return RedirectToPage("Confirmation");
         }
+
+        public async Task<IActionResult> CodeFix(CodeFixModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = UserManager.FindByNameAsync(User.Identity.Name);
+
+                Review r = new Review {
+                    FixedCode = model.editCode,
+                    ReviewerId = user.Id
+                };
+
+                return Index();
+            }
+
+            return Ok();
+        }
     }
 }

@@ -28,6 +28,10 @@ namespace FixMyCode.Entities
         public string StudentId { get; set; }
 
 
+        public int ReviewId { get; set; }
+        public Review Review { get; set; }
+
+
         public AppUser Student { get; set; }
     }
 }
